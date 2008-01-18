@@ -1,7 +1,7 @@
 === Text Hover ===
 Contributors: coffee2code
 Donate link: http://coffee2code.com
-Tags: text, post content, abbreviations, replace
+Tags: text, post content, abbreviations, terms, acronyms, hover, help
 Requires at least: 2.0.2
 Tested up to: 2.3.2
 Stable tag: trunk
