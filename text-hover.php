@@ -133,6 +133,9 @@ echo <<<END
 </form>
 	</div>
 END;
+		echo <<<END
+		<div class='wrap' style="text-align:center; color:#888;">This plugin brought to you by <a href="http://coffee2code.com" title="coffee2code.com">Scott Reilly, aka coffee2code</a>.<br /><span style="font-size:x-small;"><a href="http://coffee2code.com/donate">Did you find this plugin useful?</a></span></div>
+END;
 } //end c2c_admin_text_hover()
 add_action('admin_menu', 'c2c_admin_add_text_hover');
 
