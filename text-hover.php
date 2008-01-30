@@ -99,8 +99,8 @@ function c2c_admin_text_hover() {
 	}
 	$action_url = $_SERVER[PHP_SELF] . '?page=' . basename(__FILE__);
 echo <<<END
-	<div class='wrap'>\n
-		<h2>Text Hover Plugin Options</h2>\n
+	<div class='wrap'>
+		<h2>Text Hover Plugin Options</h2>
 		<p>Text Hover is a plugin that allows you to add hover text for text in posts.
 		   Very handy to create hover explanations of people mentioned in your blog, and/or
 		   definitions of unique acronyms and terms you use. </p>
