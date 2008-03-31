@@ -42,6 +42,7 @@ function c2c_text_hover( $text, $case_sensitive=true ) {
 	$newchars = array("\(", "\)", "\[", "\]", "\?", "\.", "\,", "\|", "\\\$", "\*", "\+", "\^", "\{", "\}");
 	$options = get_option('c2c_text_hover');
 	$text_to_hover = $options['text_to_hover'];
+	$text = ' ' . $text . ' ';
 	if (!empty($text_to_hover)) {
 		foreach ($text_to_hover as $old_text => $hover_text) {
 			$old_text = stripslashes(str_replace($oldchars, $newchars, $old_text));
@@ -51,7 +52,7 @@ function c2c_text_hover( $text, $case_sensitive=true ) {
 			$text = preg_replace("|(\s)$old_text([\s\?\!\.\,\-\+\]\)\}])+|$preg_flags", $new_text, $text);
 		}
 	}
-	return $text;
+	return trim($text);
 } //end c2c_text_hover()
 
 // Admin interface code
