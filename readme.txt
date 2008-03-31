@@ -3,9 +3,9 @@ Contributors: coffee2code
 Donate link: http://coffee2code.com
 Tags: text, post content, abbreviations, terms, acronyms, hover, help
 Requires at least: 2.0.2
-Tested up to: 2.3.2
+Tested up to: 2.5
 Stable tag: trunk
-Version: 0.9.5
+Version: 1.0
 
 Add hover text to regular text in posts.  Handy for providing explanations of names, terms, phrases, and acronyms mentioned in your blog.
 
