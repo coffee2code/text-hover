@@ -25,8 +25,8 @@ The Scooby Shack => the bar where the gang hangs out`
 
 1. Unzip `text-hover.zip` inside the `/wp-content/plugins/` directory, or upload `text-hover.php` there
 1. Activate the plugin through the 'Plugins' admin menu in WordPress
-1. Edit the configuration options for the plugin (notably to define the terms/acronyms and their explanations) via the "Text Hover" tab under "Options" in the admin section of your blog
-1. Use the terms/acronyms/phrases in a post.
+1. Go to the Options -> Text Hover (or in WP 2.5: Settings -> Text Hover) admin options page.  Optionally customize the options (namely to define the terms/acronyms and their explanations).
+1. Use the terms/acronyms in a post (terms/acronyms appearing in existing posts will also be affected by this plugin).
 
 == Frequently Asked Questions ==
 

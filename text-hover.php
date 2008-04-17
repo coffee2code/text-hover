@@ -7,6 +7,8 @@ Author: Scott Reilly
 Author URI: http://coffee2code.com
 Description: Add hover text to regular text in posts.  Handy for providing explanations of names, terms, phrases, and acronyms mentioned in your blog.
 
+Compatible with WordPress 2.2+, 2.3+, and 2.5.
+
 =>> Read the accompanying readme.txt file for more information.  Also, visit the plugin's homepage
 =>> for more information and the latest updates
 
@@ -15,8 +17,9 @@ INSTALLATION:
 1. Download the file http://coffee2code.com/wp-plugins/text-hover.zip and unzip it into your 
 /wp-content/plugins/ directory.
 2. Activate the plugin through the 'Plugins' admin menu in WordPress
-3. Edit the configuration options for the plugin (notably to define the terms/acronyms and their explanations) via the "Text Hover" tab under "Options" in the admin section of your blog
-4. Use the terms/acronyms in a post.
+3. Go to the Options -> Text Hover (or in WP 2.5: Settings -> Text Hover) admin options page.  Optionally customize the options
+(namely to define the terms/acronyms and their explanations).
+4. Use the terms/acronyms in a post (terms/acronyms appearing in existing posts will also be affected by this plugin)
 
 */
 
@@ -110,18 +113,18 @@ echo <<<END
 		<blockquote><code>WP => WordPress</code></blockquote>
 		
 		<p>Where <code>WP</code> is the term, acronym, or phrase you intend to use in your posts, and the 
-		<code>WordPress</code>
-		would be what you want to appear in a hover-box when a visitor hovers their mouse over the term.</p>
-		</p>
+		<code>WordPress</code> would be what you want to appear in a hover tooltip when a visitor hovers their
+		mouse over the term.</p>
 		
 		<p>Other considerations:</p>
 		
 		<ul>
 		<li>Terms and acronyms are assumed to be whole words within your posts (i.e. they are immediately prepended 
 			by some sort of space character (space, tab, etc) and are immediately appended by a space character or 
-			punctuations (which can include any of: ?!.,-+)]})</li>
+			punctuation (which can include any of: ?!.,-+)]})</li>
 		<li><strong><em>Define only one hovertext per line.</em></strong></li>
 		<li><strong><em>Hovertexts must not span multiple lines (automatic linewrapping is okay).</em></strong></li>
+		<li><strong><em>Don't use HTML in the hovertext.</em></strong></li>
 		</ul>
 		
 		<textarea name="text_to_hover" id="text_to_hover" style="width: 98%; font-family: \"Courier New\", Courier, mono;" rows="15" cols="40">$replacements</textarea>
