@@ -2,12 +2,12 @@
 /**
  * @package C2C_Plugins
  * @author  Scott Reilly
- * @version 041
+ * @version 042
  */
 /*
 Basis for other plugins.
 
-Compatible with WordPress 3.6+ through 4.4+.
+Compatible with WordPress 3.6+ through 4.5+.
 
 */
 
@@ -31,9 +31,9 @@ Compatible with WordPress 3.6+ through 4.4+.
 
 defined( 'ABSPATH' ) or die();
 
-if ( ! class_exists( 'c2c_TextHover_Plugin_041' ) ) :
+if ( ! class_exists( 'c2c_TextHover_Plugin_042' ) ) :
 
-abstract class c2c_TextHover_Plugin_041 {
+abstract class c2c_TextHover_Plugin_042 {
 	protected $plugin_css_version = '009';
 	protected $options            = array();
 	protected $options_from_db    = '';
@@ -65,7 +65,7 @@ abstract class c2c_TextHover_Plugin_041 {
 	 * @since 040
 	 */
 	public function c2c_plugin_version() {
-		return '041';
+		return '042';
 	}
 
 	/**
@@ -269,9 +269,12 @@ abstract class c2c_TextHover_Plugin_041 {
 	 * @return array The response array with this plugin removed, if present.
 	 */
 	public function disable_update_check( $r, $url ) {
-		if ( 0 !== strpos( $url, 'http://api.wordpress.org/plugins/update-check' ) ) {
-			return $r; // Not a plugin update request. Bail immediately.
+		// Bail immediately if not a plugin update request.
+		$plugin_update_check_strpos = strpos( $url, '://api.wordpress.org/plugins/update-check' );
+		if ( 4 !== $plugin_update_check_strpos && 5 !== $plugin_update_check_strpos ) {
+			return $r;
 		}
+
 		$plugins = unserialize( $r['body']['plugins'] );
 		unset( $plugins->plugins[ $this->plugin_basename ] );
 		unset( $plugins->active[ array_search( $this->plugin_basename, $plugins->active ) ] );
@@ -638,7 +641,7 @@ HTML;
 			$donation_url  = 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6ARCFJ9TX3522';
 			$donation_url .= urlencode( sprintf( __( 'Donation for coffee2code plugin: %s', 'text-hover' ), $this->name ) );
 			$title         = __( 'Coffee fuels my coding.', 'text-hover' );
-			$links[] = '<a href="' . esc_url( $donation_url ) . '" title="' . esc_attr( $title ) . '">Donate</a>';
+			$links[] = '<a href="' . esc_url( $donation_url ) . '" title="' . esc_attr( $title ) . '">' . __( 'Donate', 'text-hover' ) . '</a>';
 		}
 		return $links;
 	}
