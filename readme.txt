@@ -208,8 +208,9 @@ add_filter( 'c2c_text_hover_use_pretty_tooltips', '__return_false' );`
 * New: Allow HTML to be matched for text hovering. Recommended only for non-block level tags.
 * New: Allow single replacement (based on setting) for multibyte strings.
 * Bugfix: Improve text replacement regex to account for text immediately bounded by HTML tags.
-* Change: Update plugin framework to 042:
-    * Change class name to c2c_ObfuscateEmail_Plugin_042 to be plugin-specific.
+* Change: Update plugin framework to 043:
+    * Change class name to c2c_TextHover_Plugin_043 to be plugin-specific.
+    * Disregard invalid lines supplied as part of a hash option value.
     * Set textdomain using a string instead of a variable.
     * Don't load textdomain from file.
     * Change admin page header from 'h2' to 'h1' tag.
@@ -220,6 +221,7 @@ add_filter( 'c2c_text_hover_use_pretty_tooltips', '__return_false' );`
     * Remove .pot file and /lang subdirectory.
     * Remove 'Domain Path' from plugin header.
 * Change: Add many more unit tests.
+* Change: Prevent web invocation of unit test bootstrap.php.
 * New: Add LICENSE file.
 * New: Add empty index.php to prevent files from being listed if web server has enabled directory listings.
 * Change: Minor code reformatting.

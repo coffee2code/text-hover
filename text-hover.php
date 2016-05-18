@@ -25,6 +25,7 @@
  * TODO:
  * - Shortcode and template tag to display listing of all supported text hovers (filterable)
  * - Switch to pure-CSS tooltips. See: https://medium.com/two-factor-authenticity/tiny-design-bite-transitioning-tooltip-text-with-pseudo-elements-hover-states-82fbe00e8c33
+ * - (3.8) As done in Linkify Text, make it so order is not as important so longer, more precise text matches first.
 */
 
 /*
@@ -51,7 +52,7 @@ if ( ! class_exists( 'c2c_TextHover' ) ) :
 
 require_once( dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'c2c-plugin.php' );
 
-final class c2c_TextHover extends c2c_TextHover_Plugin_042 {
+final class c2c_TextHover extends c2c_TextHover_Plugin_043 {
 
 	/**
 	 * The one true instance.
