@@ -204,10 +204,16 @@ add_filter( 'c2c_text_hover_use_pretty_tooltips', '__return_false' );`
 
 == Changelog ==
 
-= () =
+= 3.7.1 (2016-06-10) =
 * Change: Update qTip2 to v3.0.3.
     * Fixes a JS invalid .min.map file reference.
     * Add plugin IE6 support.
+* Change: Update plugin framework to 044.
+    * Add `reset_caches()` to clear caches and memoized data. Use it in `reset_options()` and `verify_config()`.
+    * Add `verify_options()` with logic extracted from `verify_config()` for initializing default option attributes.
+    * Add  `add_option()` to add a new option to the plugin's configuration.
+    * Add filter 'sanitized_option_names' to allow modifying the list of whitelisted option names.
+    * Change: Refactor `get_option_names()`.
 
 = 3.7 (2016-04-28) =
 * New: Allow HTML to be matched for text hovering. Recommended only for non-block level tags.

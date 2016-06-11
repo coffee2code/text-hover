@@ -2,7 +2,7 @@
 /**
  * @package C2C_Plugins
  * @author  Scott Reilly
- * @version 043
+ * @version 044
  */
 /*
 Basis for other plugins.
@@ -31,9 +31,9 @@ Compatible with WordPress 3.6+ through 4.5+.
 
 defined( 'ABSPATH' ) or die();
 
-if ( ! class_exists( 'c2c_TextHover_Plugin_043' ) ) :
+if ( ! class_exists( 'c2c_TextHover_Plugin_044' ) ) :
 
-abstract class c2c_TextHover_Plugin_043 {
+abstract class c2c_TextHover_Plugin_044 {
 	protected $plugin_css_version = '009';
 	protected $options            = array();
 	protected $options_from_db    = '';
@@ -65,7 +65,7 @@ abstract class c2c_TextHover_Plugin_043 {
 	 * @since 040
 	 */
 	public function c2c_plugin_version() {
-		return '043';
+		return '044';
 	}
 
 	/**
@@ -351,8 +351,20 @@ abstract class c2c_TextHover_Plugin_043 {
 	 * @return array
 	 */
 	public function reset_options() {
+		$this->reset_caches();
 		$this->options = $this->get_options( false );
 		return $this->options;
+	}
+
+	/**
+	 * Resets caches and data memoization.
+	 *
+	 * @since 044
+	 */
+	public function reset_caches() {
+		$this->options         = array();
+		$this->option_names    = array();
+		$this->options_from_db = '';
 	}
 
 	/**
@@ -368,6 +380,7 @@ abstract class c2c_TextHover_Plugin_043 {
 			// unscrupulous addition of fields by the user)
 			$options = $this->get_options();
 			$option_names = $this->get_option_names();
+			$option_names = (array) apply_filters( $this->get_hook( 'sanitized_option_names' ), $option_names, $inputs );
 			foreach ( $option_names as $opt ) {
 				if ( !isset( $inputs[ $opt ] ) ) {
 					if ( $this->config[ $opt ]['input'] == 'checkbox' ) {
@@ -443,6 +456,30 @@ abstract class c2c_TextHover_Plugin_043 {
 	abstract protected function load_config();
 
 	/**
+	 * Adds a new option to the plugin's configuration.
+	 *
+	 * Intended to be used for dynamically adding a new option after the config
+	 * is initially created via load_config(), but it can be called earlier.
+	 *
+	 * @since 044
+	 *
+	 * @param string $option_name The option name.
+	 * @param array  $args        The configuration for the setting.
+	 * @return array The fully initialized option.
+	 */
+	public function add_option( $option_name, $args ) {
+		$this->config[ $option_name ] = $args;
+
+		// This function may be running after the config array has already been
+		// processed by the plugin, thus this new option won't be automatically
+		// verified, which includes setting defaults for setting attributes that
+		// weren't explicitly specified.
+		$this->verify_options( array( $option_name ) );
+
+		return $this->config[ $option_name ];
+	}
+
+	/**
 	 * Verify that the necessary configuration files were set in the inheriting class.
 	 */
 	public function verify_config() {
@@ -457,20 +494,37 @@ abstract class c2c_TextHover_Plugin_043 {
 		if ( empty( $this->config ) ) {
 			$this->show_admin = false;
 		} else {
-			// Initialize any option attributes that weren't specified by the plugin
-			foreach ( $this->get_option_names( true ) as $opt ) {
-				foreach ( $this->config_attributes as $attrib => $default) {
-					if ( ! isset( $this->config[ $opt ][ $attrib ] ) ) {
-						$this->config[ $opt ][ $attrib ] = $default;
-					}
-				}
-				if ( 'array' === $this->config[ $opt ]['datatype'] && ! is_array( $this->config[ $opt ]['default'] ) ) {
-					$this->config[ $opt ]['default'] = $this->config[ $opt ]['default'] ?
-						array( $this->config[ $opt ]['default'] ) :
-						array();
+			$this->verify_options();
+		}
+	}
+
+	/**
+	 * Initializes any option attributes that weren't specified by the plugin.
+	 *
+	 * @since 044
+	 *
+	 * @param array $options Array of all the option names to verify. Leave empty
+	 *                       to verify them all. Default empty array.
+	 */
+	public function verify_options( $options = array() ) {
+		// If no options specified, assume them all.
+		if ( ! $options ) {
+			$options = $this->get_option_names( true );
+		}
+
+		foreach ( $options as $opt ) {
+			foreach ( $this->config_attributes as $attrib => $default) {
+				if ( ! isset( $this->config[ $opt ][ $attrib ] ) ) {
+					$this->config[ $opt ][ $attrib ] = $default;
 				}
 			}
+			if ( 'array' === $this->config[ $opt ]['datatype'] && ! is_array( $this->config[ $opt ]['default'] ) ) {
+				$this->config[ $opt ]['default'] = $this->config[ $opt ]['default'] ?
+					array( $this->config[ $opt ]['default'] ) :
+					array();
+			}
 		}
+		$this->reset_caches();
 	}
 
 	/**
@@ -684,19 +738,23 @@ HTML;
 	 * @return array Array of option names.
 	 */
 	protected function get_option_names( $include_non_options = false ) {
-		if ( ! $include_non_options && ! empty( $this->option_names ) ) {
-			return $this->option_names;
-		}
+		$option_names = array();
+
 		if ( $include_non_options ) {
-			return array_keys( $this->config );
-		}
-		$this->option_names = array();
-		foreach ( array_keys( $this->config ) as $opt ) {
-			if ( isset( $this->config[ $opt ]['input'] ) && $this->config[ $opt ]['input'] != '' && $this->config[ $opt ]['input'] != 'none' && $this->is_option_valid( $opt ) ) {
-				$this->option_names[] = $opt;
+			$option_names = array_keys( $this->config );
+		} else {
+			if ( ! $this->option_names ) {
+				$this->option_names = array();
+				foreach ( array_keys( $this->config ) as $opt ) {
+					if ( isset( $this->config[ $opt ]['input'] ) && $this->config[ $opt ]['input'] != '' && $this->config[ $opt ]['input'] != 'none' && $this->is_option_valid( $opt ) ) {
+						$this->option_names[] = $opt;
+					}
+				}
 			}
+			$option_names = $this->option_names;
 		}
-		return $this->option_names;
+
+		return $option_names;
 	}
 
 	/**
