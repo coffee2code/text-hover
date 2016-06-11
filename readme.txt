@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 4.1
 Tested up to: 4.5
-Stable tag: 3.7
+Stable tag: 3.7.1
 
 Add hover text to regular text in posts. Handy for providing explanations of names, terms, phrases, and acronyms mentioned in posts/pages.
 
@@ -412,6 +412,9 @@ add_filter( 'c2c_text_hover_use_pretty_tooltips', '__return_false' );`
 
 
 == Upgrade Notice ==
+
+= 3.7.1 =
+Minor bugfix release: updated qTip2 library, which fixes a JavaScript error it had; updated plugin framework to 044.
 
 = 3.7 =
 Recommended update: added support for single replacement of multibyte strings; added support for replacing HTML; improved support for localization; verified compatibility through WP 4.5; dropped compatibility with WP older than 4.1; updated copyright date (2016)
