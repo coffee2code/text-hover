@@ -204,6 +204,11 @@ add_filter( 'c2c_text_hover_use_pretty_tooltips', '__return_false' );`
 
 == Changelog ==
 
+= () =
+* Change: Update qTip2 to v3.0.3.
+    * Fixes a JS invalid .min.map file reference.
+    * Add plugin IE6 support.
+
 = 3.7 (2016-04-28) =
 * New: Allow HTML to be matched for text hovering. Recommended only for non-block level tags.
 * New: Allow single replacement (based on setting) for multibyte strings.
