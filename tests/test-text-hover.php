@@ -218,12 +218,17 @@ class Text_Hover_Test extends WP_UnitTestCase {
 	}
 
 	public function test_no_hover_text_in_attribute() {
-		$text  = '<a href="http://example.com" title="Learn the 水 character">link</a>';
-
-		$this->assertEquals(
-			$text,
-			$this->text_hover( $text )
+		$text = array(
+			'<a href="http://example.com" title="Learn the 水 character">link</a>',
+			'<a class="fusion-button button-flat button-round button-small button-green button-1" target="_self" href="https://example.com/coffee2code-login.php"><span class="fusion-button-icon-divider button-icon-divider-left"><i class="fa fa-unlock"></i></span><span class="fusion-button-text fusion-button-text-left">Login</span></a>'
 		);
+
+		foreach ( $text as $t ) {
+			$this->assertEquals(
+				$t,
+				$this->text_hover( $t )
+			);
+		}
 	}
 
 	/**
