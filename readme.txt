@@ -30,7 +30,7 @@ Additional features of the plugin controlled both via settings and filters:
 
 **Note:** This is not the same as my [Text Replace](http://wordpress.org/plugins/text-replace) plugin, which defines terms or phrases that you want replaced by replacement text when displayed on your site. Text Hover instead adds the hover text as additional information for when visitors hover over the term, which is otherwise displayed in the post as you typed it.
 
-Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/text-hover/) | [Plugin Directory Page](https://wordpress.org/plugins/text-hover/) | [Author Homepage](http://coffee2code.com)
+Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/text-hover/) | [Plugin Directory Page](https://wordpress.org/plugins/text-hover/) | [GitHub](https://github.com/coffe2code/text-hover/) | [Author Homepage](http://coffee2code.com)
 
 
 == Installation ==
@@ -205,6 +205,7 @@ add_filter( 'c2c_text_hover_use_pretty_tooltips', '__return_false' );`
 == Changelog ==
 
 = () =
+* New: Add GitHub link to readme
 * Change: Note compatibility through WP 4.9+
 * Change: Drop compatibility with version of WP older than 4.7.
 * Change: Update copyright date (2018)
