@@ -96,7 +96,7 @@ Yes.
 
 The plugin exposes five filters for hooking. Typically, the code to utilize these hooks would go inside your active theme's functions.php file. Bear in mind that all of the features controlled by these filters are configurable via the plugin's settings page. These filters are likely only of interest to advanced users able to code.
 
-= c2c_text_hover_filters (filter) =
+**c2c_text_hover_filters (filter)**
 
 The 'c2c_text_hover_filters' hook allows you to customize what hooks get text hover applied to them.
 
@@ -120,7 +120,7 @@ function more_text_hovers( $filters ) {
 add_filter( 'c2c_text_hover_filters', 'more_text_hovers' );
 `
 
-= c2c_text_hover (filter) =
+**c2c_text_hover (filter)**
 
 The 'c2c_text_hover' hook allows you to customize or override the setting defining all of the text hover terms and their hover texts.
 
@@ -149,7 +149,7 @@ function my_text_hovers( $text_hover_array ) {
 add_filter( 'c2c_text_hover', 'my_text_hovers' );
 `
 
-= c2c_text_hover_text_comments (filter) =
+**c2c_text_hover_text_comments (filter)**
 
 The 'c2c_text_hover_text_comments' hook allows you to customize or override the setting indicating if text linkification should be enabled in comments.
 
@@ -162,7 +162,7 @@ Example:
 `// Prevent text linkification from ever being enabled in comments.
 add_filter( 'c2c_linkify_text_comments', '__return_false' );`
 
-= c2c_text_hover_case_sensitive (filter) =
+**c2c_text_hover_case_sensitive (filter)**
 
 The 'c2c_text_hover_case_sensitive' hook allows you to customize or override the setting indicating if text hover should be case sensitive.
 
@@ -175,7 +175,7 @@ Example:
 `// Prevent text hover from ever being case sensitive.
 add_filter( 'c2c_text_hover_case_sensitive', '__return_false' );`
 
-= c2c_text_hover_once (filter) =
+**c2c_text_hover_once (filter)**
 
 The 'c2c_text_hover_once' hook allows you to customize or override the setting indicating if text hovering should be limited to once per term per piece of text being processed regardless of how many times the term appears.
 
@@ -188,7 +188,7 @@ Example:
 `// Only show hovertext for a term/shortcut once per post.
 add_filter( 'c2c_text_hover_once', '__return_true' );`
 
-= c2c_text_hover_use_pretty_tooltips (filter) =
+**c2c_text_hover_use_pretty_tooltips (filter)**
 
 The 'c2c_text_hover_use_pretty_tooltips' hook allows you to customize or override the setting indicating if text hovering should use prettier tooltips to display the hover text. If false, the browser's default tooltips will be used.
 
@@ -209,6 +209,7 @@ add_filter( 'c2c_text_hover_use_pretty_tooltips', '__return_false' );`
 * Change: Note compatibility through WP 4.9+
 * Change: Drop compatibility with version of WP older than 4.7.
 * Change: Rename readme.txt section from 'Filters' to 'Hooks'
+* Change: Modify formatting of hook name in readme to prevent being uppercased when shown in the Plugin Directory
 * Change: Update copyright date (2018)
 
 = 3.7.1 (2016-06-10) =
