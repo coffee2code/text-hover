@@ -69,19 +69,19 @@ Yes, if they include strings that you've now defined as terms.
 
 = What post fields get handled by this plugin? =
 
-By default, the plugin filters the post content, post excerpt fields, widget text, and optionally comments and comment excerpts. You can use the 'c2c_text_hover_filters' filter to modify that behavior (see Filters section).
+By default, the plugin filters the post content, post excerpt fields, widget text, and optionally comments and comment excerpts. You can use the 'c2c_text_hover_filters' filter to modify that behavior (see Hooks section).
 
 = How can I get text hover to apply for post titles (or something not processed for text hover by default)? =
 
-You can add to the list of filters that get processed for text hover terms. See the Filters section for an example.
+You can add to the list of filters that get processed for text hover terms. See the Hooks section for an example.
 
 = Is the plugin case sensitive? =
 
-By default, yes. There is a setting you can change to make it case insensitive. Or you can use the 'c2c_text_hover_case_sensitive' filter (see Filters section). Note that the option applies to all terms/acronyms. If you want to selectively have terms/acronyms be case insensitive, you should leave the case sensitive setting checked and add a listing for each case variation you wish to support.
+By default, yes. There is a setting you can change to make it case insensitive. Or you can use the 'c2c_text_hover_case_sensitive' filter (see Hooks section). Note that the option applies to all terms/acronyms. If you want to selectively have terms/acronyms be case insensitive, you should leave the case sensitive setting checked and add a listing for each case variation you wish to support.
 
 = Will all instances of a given term be hovered in a single post? =
 
-By default, yes. There is a setting you can change so that only the first occurrence of the term in the post gets hovered. Or if you are a coder, you can use the 'c2c_text_hover_replace_once' filter (see Filters section).
+By default, yes. There is a setting you can change so that only the first occurrence of the term in the post gets hovered. Or if you are a coder, you can use the 'c2c_text_hover_replace_once' filter (see Hooks section).
 
 = Can I style the tooltip? =
 
@@ -92,7 +92,7 @@ Yes, but only if you have the pretty tooltips enabled (via settings or the filte
 Yes.
 
 
-== Filters ==
+== Hooks ==
 
 The plugin exposes five filters for hooking. Typically, the code to utilize these hooks would go inside your active theme's functions.php file. Bear in mind that all of the features controlled by these filters are configurable via the plugin's settings page. These filters are likely only of interest to advanced users able to code.
 
@@ -208,6 +208,7 @@ add_filter( 'c2c_text_hover_use_pretty_tooltips', '__return_false' );`
 * New: Add GitHub link to readme
 * Change: Note compatibility through WP 4.9+
 * Change: Drop compatibility with version of WP older than 4.7.
+* Change: Rename readme.txt section from 'Filters' to 'Hooks'
 * Change: Update copyright date (2018)
 
 = 3.7.1 (2016-06-10) =
