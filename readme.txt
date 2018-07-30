@@ -205,6 +205,7 @@ add_filter( 'c2c_text_hover_use_pretty_tooltips', '__return_false' );`
 == Changelog ==
 
 = () =
+* Change: Cast return values of hooks to expected data types
 * New: Add GitHub link to readme
 * Unit tests:
     * Change: Default `WP_TESTS_DIR` to `/tmp/wordpress-tests-lib` rather than erroring out if not defined via environment variable

@@ -153,8 +153,8 @@ final class c2c_TextHover extends c2c_TextHover_Plugin_044 {
 	 * Override the plugin framework's register_filters() to actually actions against filters.
 	 */
 	public function register_filters() {
-		$filters = apply_filters( 'c2c_text_hover_filters', array( 'the_content', 'get_the_excerpt', 'widget_text' ) );
-		foreach ( (array) $filters as $filter ) {
+		$filters = (array) apply_filters( 'c2c_text_hover_filters', array( 'the_content', 'get_the_excerpt', 'widget_text' ) );
+		foreach ( $filters as $filter ) {
 			add_filter( $filter, array( $this, 'text_hover' ), 3 );
 		}
 
@@ -213,7 +213,7 @@ final class c2c_TextHover extends c2c_TextHover_Plugin_044 {
 	public function enqueue_scripts() {
 		$options = $this->get_options();
 
-		if ( ! apply_filters( 'c2c_text_hover_use_pretty_tooltips', $options['use_pretty_tooltips'] == '1' ) ) {
+		if ( ! (bool) apply_filters( 'c2c_text_hover_use_pretty_tooltips', $options['use_pretty_tooltips'] == '1' ) ) {
 			return;
 		}
 
@@ -235,7 +235,7 @@ final class c2c_TextHover extends c2c_TextHover_Plugin_044 {
 	public function text_hover_comment_text( $text ) {
 		$options = $this->get_options();
 
-		if ( apply_filters( 'c2c_text_hover_comments', $options['text_hover_comments'] ) ) {
+		if ( (bool) apply_filters( 'c2c_text_hover_comments', $options['text_hover_comments'] ) ) {
 			$text = $this->text_hover( $text );
 		}
 
@@ -250,9 +250,9 @@ final class c2c_TextHover extends c2c_TextHover_Plugin_044 {
 	 */
 	public function text_hover( $text ) {
 		$options        = $this->get_options();
-		$text_to_hover  = apply_filters( 'c2c_text_hover',                $options['text_to_hover'] );
-		$case_sensitive = apply_filters( 'c2c_text_hover_case_sensitive', $options['case_sensitive'] );
-		$limit          = apply_filters( 'c2c_text_hover_once',           $options['replace_once'] ) ? 1 : -1;
+		$text_to_hover  = (array) apply_filters( 'c2c_text_hover',                $options['text_to_hover'] );
+		$case_sensitive = (bool)  apply_filters( 'c2c_text_hover_case_sensitive', $options['case_sensitive'] );
+		$limit          = (bool)  apply_filters( 'c2c_text_hover_once',           $options['replace_once'] );
 		$preg_flags     = $case_sensitive ? 's' : 'si';
 		$mb_regex_encoding = null;
 
@@ -322,7 +322,7 @@ final class c2c_TextHover extends c2c_TextHover_Plugin_044 {
 			if ( $use_mb ) {
 				// NOTE: mb_ereg_replace() does not support limiting the number of
 				// replacements, hence the different handling if replacing once.
-				if ( 1 === $limit ) {
+				if ( $limit ) {
 					// Find first occurrence of the search string.
 					$pos = mb_strpos( $text, $orig_old_text );
 					// Only do the replacement if the search string was found.
@@ -335,7 +335,7 @@ final class c2c_TextHover extends c2c_TextHover_Plugin_044 {
 					$text = mb_ereg_replace( $regex, $new_text, $text, $preg_flags );
 				}
 			} else {
-				$text = preg_replace( "~{$regex}~{$preg_flags}", $new_text, $text, $limit );
+				$text = preg_replace( "~{$regex}~{$preg_flags}", $new_text, $text, ( $limit ? 1 : -1 ) );
 			}
 
 		}
