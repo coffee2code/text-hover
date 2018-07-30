@@ -204,6 +204,9 @@ add_filter( 'c2c_text_hover_use_pretty_tooltips', '__return_false' );`
 
 == Changelog ==
 
+= () =
+* Change: Update copyright date (2018)
+
 = 3.7.1 (2016-06-10) =
 * Change: Update qTip2 to v3.0.3.
     * Fixes a JS invalid .min.map file reference.
