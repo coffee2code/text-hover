@@ -17,13 +17,21 @@ class Text_Hover_Test extends WP_UnitTestCase {
 		'piñata'         => 'Full of candy',
 	);
 
+	public static function setUpBeforeClass() {
+		c2c_TextHover::get_instance()->install();
+	}
+
 	public function setUp() {
 		parent::setUp();
+		c2c_TextHover::get_instance()->reset_options();
 		$this->set_option();
 	}
 
 	public function tearDown() {
 		parent::tearDown();
+
+		// Reset options
+		c2c_TextHover::get_instance()->reset_options();
 
 		remove_filter( 'c2c_text_hover',                array( $this, 'add_text_to_hover' ) );
 		remove_filter( 'c2c_text_hover_once',           '__return_true' );
