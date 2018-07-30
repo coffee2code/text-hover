@@ -4,8 +4,8 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: text, post content, abbreviations, terms, acronyms, hover, help, coffee2code
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Requires at least: 4.1
-Tested up to: 4.5
+Requires at least: 4.7
+Tested up to: 4.9
 Stable tag: 3.7.1
 
 Add hover text to regular text in posts. Handy for providing explanations of names, terms, phrases, and acronyms mentioned in posts/pages.
@@ -205,6 +205,8 @@ add_filter( 'c2c_text_hover_use_pretty_tooltips', '__return_false' );`
 == Changelog ==
 
 = () =
+* Change: Note compatibility through WP 4.9+
+* Change: Drop compatibility with version of WP older than 4.7.
 * Change: Update copyright date (2018)
 
 = 3.7.1 (2016-06-10) =

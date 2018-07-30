@@ -10,7 +10,7 @@
  * Text Domain: text-hover
  * Description: Add hover text to regular text in posts. Handy for providing explanations of names, terms, phrases, and acronyms mentioned in your blog.
  *
- * Compatible with WordPress 4.1+ through 4.5+.
+ * Compatible with WordPress 4.7+ through 4.9+.
  *
  * =>> Read the accompanying readme.txt file for instructions and documentation.
  * =>> Also, visit the plugin's homepage for additional information and updates.
