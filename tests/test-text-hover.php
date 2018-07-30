@@ -417,14 +417,36 @@ class Text_Hover_Test extends WP_UnitTestCase {
 		$this->assertEquals( $this->expected_text( 'coffee2code' ), apply_filters( 'custom_filter', 'coffee2code' ) );
 	}
 
+	/*
+	 * Setting handling
+	 */
+
+	/*
+	// This is normally the case, but the unit tests save the setting to db via
+	// setUp(), so until the unit tests are restructured somewhat, this test
+	// would fail.
+	public function test_does_not_immediately_store_default_settings_in_db() {
+		$option_name = c2c_TextHover::SETTING_NAME;
+		// Get the options just to see if they may get saved.
+		$options     = c2c_TextHover::get_instance()->get_options();
+
+		$this->assertFalse( get_option( $option_name ) );
+	}
+	*/
+
 	public function test_uninstall_deletes_option() {
-		c2c_TextHover::get_instance()->get_options();
+		$option_name = c2c_TextHover::SETTING_NAME;
+		$options     = c2c_TextHover::get_instance()->get_options();
 
-		$this->assertNotFalse( get_option( c2c_TextHover::SETTING_NAME ) );
+		// Explicitly set an option to ensure options get saved to the database.
+		$this->set_option( array( 'replace_once' => true ) );
 
-		c2c_TextHover::uninstall();
+		$this->assertNotEmpty( $options );
+		$this->assertNotFalse( get_option( $option_name ) );
 
-		$this->assertFalse( get_option( c2c_TextHover::SETTING_NAME ) );
+		c2c_TextReplace::uninstall();
+
+		$this->assertFalse( get_option( $option_name ) );
 	}
 
 }
