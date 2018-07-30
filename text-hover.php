@@ -55,6 +55,14 @@ require_once( dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'c2c-plugin.php' );
 final class c2c_TextHover extends c2c_TextHover_Plugin_044 {
 
 	/**
+	 * Name of plugin's setting.
+	 *
+	 * @since 3.8
+	 * @var string
+	 */
+	const SETTING_NAME = 'c2c_text_hover';
+
+	/**
 	 * The one true instance.
 	 *
 	 * @var c2c_TextHover
@@ -97,7 +105,7 @@ final class c2c_TextHover extends c2c_TextHover_Plugin_044 {
 	 * Handles uninstallation tasks, such as deleting plugin options.
 	 */
 	public function uninstall() {
-		delete_option( 'c2c_text_hover' );
+		delete_option( self::SETTING_NAME );
 	}
 
 	/**

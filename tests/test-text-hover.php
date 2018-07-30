@@ -418,14 +418,13 @@ class Text_Hover_Test extends WP_UnitTestCase {
 	}
 
 	public function test_uninstall_deletes_option() {
-		$option = 'c2c_text_hover';
 		c2c_TextHover::get_instance()->get_options();
 
-		$this->assertNotFalse( get_option( $option ) );
+		$this->assertNotFalse( get_option( c2c_TextHover::SETTING_NAME ) );
 
 		c2c_TextHover::uninstall();
 
-		$this->assertFalse( get_option( $option ) );
+		$this->assertFalse( get_option( c2c_TextHover::SETTING_NAME ) );
 	}
 
 }
