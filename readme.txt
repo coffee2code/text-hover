@@ -211,6 +211,21 @@ add_filter( 'c2c_text_hover_use_pretty_tooltips', '__return_false' );`
 * Change: Switch for using deprecated 'acronym' tag to using 'abbr'
 * Change: Cast return values of hooks to expected data types
 * Change: Add version number when enqueuing CSS files
+* Change: Update plugin framework to 048
+    * 048:
+    * When resetting options, delete the option rather than setting it with default values
+    * Prevent double "Settings reset" admin notice upon settings reset
+    * 047:
+    * Don't save default setting values to database on install
+    * Change "Cheatin', huh?" error messages to "Something went wrong.", consistent with WP core
+    * Note compatibility through WP 4.9+
+    * Drop compatibility with version of WP older than 4.7
+    * 046:
+    * Fix `reset_options()` to reference instance variable `$options`
+    * Note compatibility through WP 4.7+
+    * Update copyright date (2017)
+    * 045:
+    * Ensure `reset_options()` resets values saved in the database
 * New: Add GitHub link to readme
 * Change: Store setting name in constant
 * Unit tests:
