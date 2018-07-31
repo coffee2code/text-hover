@@ -145,7 +145,7 @@ final class c2c_TextHover extends c2c_TextHover_Plugin_048 {
 			'case_sensitive' => array(
 				'input'            => 'checkbox',
 				'default'          => true,
-				'label'            => __( 'Should the matching of terms/acronyms be case sensitive?', 'text-hover' ),
+				'label'            => __( 'Should the matching of terms/abbreviations be case sensitive?', 'text-hover' ),
 				'help'             => __( 'If checked, then hover text defined for \'WP\' would not apply to \'wp\'. This setting applies to all terms. If you want to selectively have case insensitive terms, then leave this option checked and create separate entries for each variation.', 'text-hover' ),
 			),
 			'use_pretty_tooltips' => array(
@@ -181,16 +181,16 @@ final class c2c_TextHover extends c2c_TextHover_Plugin_048 {
 	public function options_page_description( $localized_heading_text = '' ) {
 		parent::options_page_description( __( 'Text Hover Settings', 'text-hover' ) );
 
-		echo '<p>' . __( 'Text Hover is a plugin that allows you to add hover text for text in posts. Very handy to create hover explanations of people mentioned in your blog, and/or definitions of unique acronyms and terms you use.', 'text-hover' ) . '</p>';
+		echo '<p>' . __( 'Text Hover is a plugin that allows you to add hover text for text in posts. Very handy to create hover explanations of people mentioned in your blog, and/or definitions of unique abbreviations and terms you use.', 'text-hover' ) . '</p>';
 		echo '<div class="c2c-hr">&nbsp;</div>';
-		echo '<h3>' . __( 'Acronyms and hover text', 'text-hover' ) . '</h3>';
-		echo '<p>' . __( 'Define terms/acronyms and hovertext explanations here.  The format should be like this:', 'text-hover' ) . '</p>';
+		echo '<h3>' . __( 'Abbreviations and hover text', 'text-hover' ) . '</h3>';
+		echo '<p>' . __( 'Define terms/abbreviations and hovertext explanations here.  The format should be like this:', 'text-hover' ) . '</p>';
 		echo "<blockquote><code>WP => WordPress</code></blockquote>";
 		echo '<p>' . __( 'Where <code>WP</code> is the term, acronym, or phrase you intend to use in your posts, and the <code>WordPress</code> would be what you want to appear in a hover tooltip when a visitor hovers their mouse over the term.', 'text-hover' );
-		echo ' ' . __( 'See how things look: <acronym title="WordPress" style="border-bottom:1px dashed #000;">WP</acronym>.', 'text-hover' ) . '</p>';
+		echo ' ' . __( 'See how things look: <abbr title="WordPress" style="border-bottom:1px dashed #000;">WP</abbr>.', 'text-hover' ) . '</p>';
 		echo '<p>' . __( 'Other considerations:', 'text-hover' ) . '</p>';
 		echo '<ul class="c2c-plugin-list"><li>';
-		echo __( 'Terms and acronyms are assumed to be whole words within your posts (i.e. they are immediately prepended by some sort of space character (space, tab, etc) and are immediately appended by a space character or punctuation (which can include any of: ?!.,-+)]})', 'text-hover' );
+		echo __( 'Terms and abbreviations are assumed to be whole words within your posts (i.e. they are immediately prepended by some sort of space character (space, tab, etc) and are immediately appended by a space character or punctuation (which can include any of: ?!.,-+)]})', 'text-hover' );
 		echo '</li><li>';
 		echo __( 'Only use quotes it they are actual part of the original or hovertext strings.', 'text-hover' );
 		echo '</li><li><strong><em>';
@@ -293,7 +293,7 @@ final class c2c_TextHover extends c2c_TextHover_Plugin_048 {
 
 			$use_mb = $can_do_mb && ( strlen( $old_text ) != mb_strlen( $old_text ) );
 
-			//$new_text = "\\1<acronym class='c2c-text-hover' title='" . esc_attr( addcslashes( $hover_text, '\\$' ) ) . "'>\\2</acronym>\\3";
+			//$new_text = "\\1<abbr class='c2c-text-hover' title='" . esc_attr( addcslashes( $hover_text, '\\$' ) ) . "'>\\2</abbr>\\3";
 			$new_text = "<abbr class='c2c-text-hover' title='" . esc_attr( addcslashes( $hover_text, '\\$' ) ) . "'>\\1</abbr>";
 
 			// If the string to be hovered looks like it could be HTML, then just do true

@@ -38,8 +38,8 @@ Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/text-hover/) | [Plugi
 1. Whether installing or updating, whether this plugin or any other, it is always advisable to back-up your data before starting
 1. Install via the built-in WordPress plugin installer. Or download and unzip `text-hover.zip` inside the plugins directory for your site (typically `wp-content/plugins/`)
 1. Activate the plugin through the 'Plugins' admin menu in WordPress
-1. Go to the `Settings` -> `Text Hover` admin settings page and customize the settings (namely to define the terms/acronyms and their explanations).
-1. Use the terms/acronyms in posts and/or pages (terms/acronyms appearing in existing posts will also be affected by this plugin)
+1. Go to the `Settings` -> `Text Hover` admin settings page and customize the settings (namely to define the terms/abbreviations and their explanations).
+1. Use the terms/abbreviations in posts and/or pages (terms/abbreviations appearing in existing posts will also be affected by this plugin)
 
 
 == Screenshots ==
@@ -53,11 +53,13 @@ Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/text-hover/) | [Plugi
 
 = In my posts, hover text terms do not appear any differently than regular text (though I can hover over them and see the hover text)! What gives? =
 
-The plugin currently makes use of the standard HTML tag `acronym` to specify the terms and their hover text. Browsers have default handling and display of `acronym`. It's possibly that the CSS for your theme is overriding the default display. I use the following in my site's styles.css file to ensure it displays for me in the manner I prefer (which, by the same token, you can use more CSS formatting to further format the hover terms) :
+The plugin currently makes use of the standard HTML tag `abbr` to specify the terms and their hover text. Browsers have default handling and display of `abbr`. It's possibly that the CSS for your theme is overriding the default display. I use the following in my site's styles.css file to ensure it displays for me in the manner I prefer (which, by the same token, you can use more CSS formatting to further format the hover terms) :
 
-`acronym {
-	border-bottom:1px dotted #000;
-}`
+`
+abbr {
+	text-decoration: underline dotted #000;
+}
+`
 
 = Does this plugin modify the post content in the database? =
 
@@ -77,7 +79,7 @@ You can add to the list of filters that get processed for text hover terms. See 
 
 = Is the plugin case sensitive? =
 
-By default, yes. There is a setting you can change to make it case insensitive. Or you can use the 'c2c_text_hover_case_sensitive' filter (see Hooks section). Note that the option applies to all terms/acronyms. If you want to selectively have terms/acronyms be case insensitive, you should leave the case sensitive setting checked and add a listing for each case variation you wish to support.
+By default, yes. There is a setting you can change to make it case insensitive. Or you can use the 'c2c_text_hover_case_sensitive' filter (see Hooks section). Note that the option applies to all terms/abbreviations. If you want to selectively have terms/acronyms be case insensitive, you should leave the case sensitive setting checked and add a listing for each case variation you wish to support.
 
 = Will all instances of a given term be hovered in a single post? =
 
@@ -207,7 +209,7 @@ add_filter( 'c2c_text_hover_use_pretty_tooltips', '__return_false' );`
 = () =
 * New: Ensure longer, more precise link strings match before shorter strings that might also match, regardless of order defined
 * New: Add support for finding text to hover that may span more than one line or whose internal spaces vary in number and type
-* Fix: Prevent acronyms from being embedded within acronyms
+* Fix: Prevent hover text from being embedded within over hover text
 * Change: Switch for using deprecated 'acronym' tag to using 'abbr'
 * Change: Cast return values of hooks to expected data types
 * Change: Add version number when enqueuing CSS files
