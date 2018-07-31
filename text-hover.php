@@ -294,7 +294,7 @@ final class c2c_TextHover extends c2c_TextHover_Plugin_044 {
 			$use_mb = $can_do_mb && ( strlen( $old_text ) != mb_strlen( $old_text ) );
 
 			//$new_text = "\\1<acronym class='c2c-text-hover' title='" . esc_attr( addcslashes( $hover_text, '\\$' ) ) . "'>\\2</acronym>\\3";
-			$new_text = "<acronym class='c2c-text-hover' title='" . esc_attr( addcslashes( $hover_text, '\\$' ) ) . "'>\\1</acronym>";
+			$new_text = "<abbr class='c2c-text-hover' title='" . esc_attr( addcslashes( $hover_text, '\\$' ) ) . "'>\\1</abbr>";
 
 			// If the string to be hovered looks like it could be HTML, then just do true
 			// str_replace() and trust the user knows what they're doing.
@@ -367,8 +367,8 @@ final class c2c_TextHover extends c2c_TextHover_Plugin_044 {
 			mb_regex_encoding( $mb_regex_encoding );
 		}
 
-		// Remove acronyms within acronyms.
-		$text = preg_replace( "#(<acronym\s+[^>]+>)(.*)<acronym\s+[^>]+>([^<]*)</acronym>([^>]*)</acronym>#iU", "$1$2$3$4</acronym>" , $text );
+		// Remove abbreviations within abbreviations.
+		$text = preg_replace( "#(<abbr\s+[^>]+>)(.*)<abbr\s+[^>]+>([^<]*)</abbr>([^>]*)</abbr>#iU", "$1$2$3$4</abbr>" , $text );
 
 		return trim( $text );
 	}

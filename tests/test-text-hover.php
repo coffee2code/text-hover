@@ -133,7 +133,7 @@ class Text_Hover_Test extends WP_UnitTestCase {
 		if ( $display_term ) {
 			$term = $display_term;
 		}
-		return "<acronym class='c2c-text-hover' title='" . esc_attr( $hover_text ) . "'>$term</acronym>";
+		return "<abbr class='c2c-text-hover' title='" . esc_attr( $hover_text ) . "'>$term</abbr>";
 	}
 
 	public function add_text_to_hover( $text_to_hover ) {
@@ -197,7 +197,7 @@ class Text_Hover_Test extends WP_UnitTestCase {
 	// this is explicitly tested.
 	public function test_hover_text_is_attribute_escaped() {
 		$this->assertEquals(
-			"<acronym class='c2c-text-hover' title='&lt;strong&gt;HTML&lt;/strong&gt;'>HTML</acronym>",
+			"<abbr class='c2c-text-hover' title='&lt;strong&gt;HTML&lt;/strong&gt;'>HTML</abbr>",
 			$this->text_hover( 'HTML' )
 		);
 	}
@@ -279,7 +279,7 @@ class Text_Hover_Test extends WP_UnitTestCase {
 		$this->set_option( array( 'text_to_hover' => array( '<strong>The Doctor</strong>' => 'The man from Gallifrey' ) ) );
 
 		$this->assertEquals(
-			"Have you met <acronym class='c2c-text-hover' title='The man from Gallifrey'><strong>The Doctor</strong></acronym>?",
+			"Have you met <abbr class='c2c-text-hover' title='The man from Gallifrey'><strong>The Doctor</strong></abbr>?",
 			$this->text_hover( 'Have you met <strong>The Doctor</strong>?' )
 		);
 	}
@@ -288,7 +288,7 @@ class Text_Hover_Test extends WP_UnitTestCase {
 		$this->set_option( array( 'text_to_hover' => array( 'I <3 dogs' => 'Mostly boxers and pit bulls' ) ) );
 
 		$this->assertEquals(
-			'<a href="#" title="I <3 dogs">Did you know <acronym class=\'c2c-text-hover\' title=\'Mostly boxers and pit bulls\'>I <3 dogs</acronym>?</a>',
+			'<a href="#" title="I <3 dogs">Did you know <abbr class=\'c2c-text-hover\' title=\'Mostly boxers and pit bulls\'>I <3 dogs</abbr>?</a>',
 			$this->text_hover( '<a href="#" title="I <3 dogs">Did you know I <3 dogs?</a>' )
 		);
 	}
@@ -432,7 +432,7 @@ class Text_Hover_Test extends WP_UnitTestCase {
 
 	public function test_hovers_term_added_via_filter() {
 		$this->assertEquals( 'bbPress', $this->text_hover( 'bbPress' ) );
-		$expected = "<acronym class='c2c-text-hover' title='Forum Software'>bbPress</acronym>";
+		$expected = "<abbr class='c2c-text-hover' title='Forum Software'>bbPress</abbr>";
 		add_filter( 'c2c_text_hover', array( $this, 'add_text_to_hover' ) );
 
 		$this->assertEquals( $expected, $this->text_hover( 'bbPress' ) );
