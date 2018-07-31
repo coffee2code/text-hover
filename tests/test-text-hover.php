@@ -5,7 +5,9 @@ defined( 'ABSPATH' ) or die();
 class Text_Hover_Test extends WP_UnitTestCase {
 
 	protected static $text_to_hover = array(
+		'WP Tavern'      => 'Site for WordPress-related news',
 		'WP'             => 'WordPress',
+		'WP COM'         => 'WordPress.com',
 		"coffee2code"    => 'Plugin developer',
 		'Matt Mullenweg' => 'Co-Founder of WordPress',
 		'blank'          => '',
@@ -318,6 +320,30 @@ class Text_Hover_Test extends WP_UnitTestCase {
 		$this->assertEquals( $expected,     $this->text_hover( 'coffee2code' ) );
 		$this->assertEquals( 'Coffee2code', $this->text_hover( 'Coffee2code' ) );
 		$this->assertEquals( 'COFFEE2CODE', $this->text_hover( 'COFFEE2CODE' ) );
+	}
+
+	/*
+	 * With 'WP Tavern' followed by 'WP' as hover defines, the former should not
+	 * hand the latter's hover applied to it.
+	 */
+	public function test_does_not_hover_a_general_term_that_is_included_in_earlier_listed_term() {
+		$string = 'WP Tavern';
+
+		$this->assertEquals( $this->expected_text( $string ), $this->text_hover( $string ) );
+	}
+
+	/**
+	 * Ensure a more specific string matches with priority over a less specific
+	 * string, regardless of what order they were defined.
+	 *
+	 *  MAYBE! Not sure if this is desired. But the theory is if both
+	 * "WP" and "WP COM" are defined, then the text latter should get
+	 * hovered, even though the former was defined first.
+	 */
+	public function test_does_not_hover_a_more_general_term_when_general_is_first() {
+		$expected = $this->expected_text( 'WP COM' );
+
+		$this->assertEquals( "This $expected is true", $this->text_hover( 'This WP COM is true' ) );
 	}
 
 	public function test_hovers_once_via_setting() {

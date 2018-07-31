@@ -274,6 +274,17 @@ final class c2c_TextHover extends c2c_TextHover_Plugin_044 {
 			mb_regex_encoding( 'UTF-8' );
 		}
 
+		if ( $text_to_hover ) {
+			// Sort array descending by key length. This way longer, more precise
+			// strings take precedence over shorter strings, preventing premature
+			// partial replacements.
+			// E.g. if "abc" and "abc def" are both defined  and in that order, the
+			// string "abc def ghi" would match on "abc def", the longer string rather
+			// than the shorter, less precise "abc".
+			$keys = array_map( $can_do_mb ? 'mb_strlen' : 'strlen', array_keys( $text_to_hover ) );
+			array_multisort( $keys, SORT_DESC, $text_to_hover );
+		}
+
 		foreach ( $text_to_hover as $old_text => $hover_text ) {
 
 			if ( ! $hover_text ) {
