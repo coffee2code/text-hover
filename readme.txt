@@ -210,6 +210,7 @@ add_filter( 'c2c_text_hover_use_pretty_tooltips', '__return_false' );`
 * Fix: Prevent acronyms from being embedded within acronyms
 * Change: Switch for using deprecated 'acronym' tag to using 'abbr'
 * Change: Cast return values of hooks to expected data types
+* Change: Add version number when enqueuing CSS files
 * New: Add GitHub link to readme
 * Change: Store setting name in constant
 * Unit tests:
