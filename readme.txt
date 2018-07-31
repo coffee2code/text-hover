@@ -226,6 +226,7 @@ add_filter( 'c2c_text_hover_use_pretty_tooltips', '__return_false' );`
     * Update copyright date (2017)
     * 045:
     * Ensure `reset_options()` resets values saved in the database
+* New: Add README.md
 * New: Add GitHub link to readme
 * Change: Store setting name in constant
 * Unit tests:
