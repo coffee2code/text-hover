@@ -274,9 +274,9 @@ final class c2c_TextHover extends c2c_TextHover_Plugin_044 {
 			mb_regex_encoding( 'UTF-8' );
 		}
 
-		foreach ( (array) $text_to_hover as $old_text => $hover_text ) {
+		foreach ( $text_to_hover as $old_text => $hover_text ) {
 
-			if ( empty( $hover_text ) ) {
+			if ( ! $hover_text ) {
 				continue;
 			}
 

@@ -96,7 +96,7 @@ class Text_Hover_Test extends WP_UnitTestCase {
 	protected function text_hovers( $term = '' ) {
 		$text_to_hover = self::$text_to_hover;
 
-		if ( ! empty( $term ) ) {
+		if ( $term ) {
 			$text_to_hover = isset( $text_to_hover[ $term ] ) ? $text_to_hover[ $term ] : '';
 		}
 
@@ -121,10 +121,10 @@ class Text_Hover_Test extends WP_UnitTestCase {
 	 */
 	protected function expected_text( $term, $display_term = '' ) {
 		$hover_text = $this->text_hovers( $term );
-		if ( empty( $hover_text ) ) {
+		if ( ! $hover_text ) {
 			$hover_text = $this->text_hovers( strtolower( $term ) );
 		}
-		if ( empty( $hover_text ) ){
+		if ( ! $hover_text ) {
 			return $term;
 		}
 		if ( $display_term ) {
