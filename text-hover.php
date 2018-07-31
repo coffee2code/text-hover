@@ -364,6 +364,9 @@ final class c2c_TextHover extends c2c_TextHover_Plugin_044 {
 			mb_regex_encoding( $mb_regex_encoding );
 		}
 
+		// Remove acronyms within acronyms.
+		$text = preg_replace( "#(<acronym\s+[^>]+>)(.*)<acronym\s+[^>]+>([^<]*)</acronym>([^>]*)</acronym>#iU", "$1$2$3$4</acronym>" , $text );
+
 		return trim( $text );
 	}
 
