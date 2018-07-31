@@ -221,7 +221,7 @@ final class c2c_TextHover extends c2c_TextHover_Plugin_048 {
 	public function enqueue_scripts() {
 		$options = $this->get_options();
 
-		if ( ! (bool) apply_filters( 'c2c_text_hover_use_pretty_tooltips', $options['use_pretty_tooltips'] == '1' ) ) {
+		if ( ! (bool) apply_filters( 'c2c_text_hover_use_pretty_tooltips', $options['use_pretty_tooltips'] ) ) {
 			return;
 		}
 
