@@ -452,7 +452,7 @@ class Text_Hover_Test extends WP_UnitTestCase {
 		$this->assertNotEmpty( $options );
 		$this->assertNotFalse( get_option( $option_name ) );
 
-		c2c_TextReplace::uninstall();
+		c2c_TextHover::uninstall();
 
 		$this->assertFalse( get_option( $option_name ) );
 	}
