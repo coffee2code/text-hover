@@ -371,6 +371,14 @@ class Text_Hover_Test extends WP_UnitTestCase {
 		$this->assertEquals( "$expected coffee2code coffee2code", $this->text_hover( 'coffee2code coffee2code coffee2code' ) );
 	}
 
+	public function test_hovers_once_via_trueish_setting_value() {
+		$expected = $this->expected_text( 'coffee2code' );
+		$this->test_hovers_single_term_multiple_times();
+		$this->set_option( array( 'replace_once' => '1' ) );
+
+		$this->assertEquals( "$expected coffee2code coffee2code", $this->text_hover( 'coffee2code coffee2code coffee2code' ) );
+	}
+
 	public function test_hovers_once_via_filter() {
 		$expected = $this->expected_text( 'coffee2code' );
 		$this->test_hovers_single_term_multiple_times();
