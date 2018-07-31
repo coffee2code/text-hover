@@ -346,6 +346,23 @@ class Text_Hover_Test extends WP_UnitTestCase {
 		$this->assertEquals( "This $expected is true", $this->text_hover( 'This WP COM is true' ) );
 	}
 
+	public function test_hovers_multibyte_text_once_via_setting() {
+		$linked = $this->expected_text( '漢字はユニコード' );
+
+		$this->set_option( array( 'replace_once' => true ) );
+
+		$expected = array(
+			"$linked cat 漢字はユニコード cat 漢字はユニコード"
+				=> $this->text_hover( '漢字はユニコード cat 漢字はユニコード cat 漢字はユニコード' ),
+			'dock ' . $linked . ' cart 漢字はユニコード'
+				=> $this->text_hover( 'dock 漢字はユニコード cart 漢字はユニコード' ),
+		);
+
+		foreach ( $expected as $expect => $actual ) {
+			$this->assertEquals( $expect, $actual );
+		}
+	}
+
 	public function test_hovers_once_via_setting() {
 		$expected = $this->expected_text( 'coffee2code' );
 		$this->test_hovers_single_term_multiple_times();
