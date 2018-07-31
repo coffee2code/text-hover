@@ -206,6 +206,7 @@ add_filter( 'c2c_text_hover_use_pretty_tooltips', '__return_false' );`
 
 = () =
 * New: Ensure longer, more precise link strings match before shorter strings that might also match, regardless of order defined
+* New: Add support for finding text to hover that may span more than one line or whose internal spaces vary in number and type
 * Fix: Prevent acronyms from being embedded within acronyms
 * Change: Cast return values of hooks to expected data types
 * New: Add GitHub link to readme

@@ -261,7 +261,7 @@ final class c2c_TextHover extends c2c_TextHover_Plugin_044 {
 		$text_to_hover  = (array) apply_filters( 'c2c_text_hover',                $options['text_to_hover'] );
 		$case_sensitive = (bool)  apply_filters( 'c2c_text_hover_case_sensitive', $options['case_sensitive'] );
 		$limit          = (bool)  apply_filters( 'c2c_text_hover_once',           $options['replace_once'] );
-		$preg_flags     = $case_sensitive ? 's' : 'si';
+		$preg_flags     = $case_sensitive ? 'ms' : 'msi';
 		$mb_regex_encoding = null;
 
 		$text = ' ' . $text . ' ';
@@ -329,6 +329,9 @@ final class c2c_TextHover extends c2c_TextHover_Plugin_044 {
 			if ( false !== strpos( $old_text, '&' ) ) {
 				$old_text = str_replace( '&', '&(?:amp;|#038;)?', $old_text );
 			}
+
+			// Allow spaces in hoverable text to represent any number of whitespace chars.
+			$old_text = preg_replace( '/\s+/', '\s+', $old_text );
 
 			// WILL match string within string, but WON'T match within tags
 			/*

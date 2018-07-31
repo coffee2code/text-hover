@@ -17,6 +17,7 @@ class Text_Hover_Test extends WP_UnitTestCase {
 		'水'             => 'water',
 		'<em>Test</em>'  => 'This is text associated with a replacement that includes HTML tags.',
 		'piñata'         => 'Full of candy',
+		'Kónståntîn český คำถาม 問題和答案 Поделитьс' => 'lots of special characters',
 	);
 
 	public static function setUpBeforeClass() {
@@ -345,6 +346,22 @@ class Text_Hover_Test extends WP_UnitTestCase {
 
 		$this->assertEquals( "This $expected is true", $this->text_hover( 'This WP COM is true' ) );
 	}
+
+	public function tests_hovers_term_split_across_multiple_lines() {
+		$expected = array(
+			"Did you see " . $this->expected_text( 'Matt Mullenweg', "Matt\nMullenweg" ) . " at the party?"
+				=> $this->text_hover( "Did you see Matt\nMullenweg at the party?" ),
+			"Did you see " . $this->expected_text( 'Matt Mullenweg', 'Matt  Mullenweg' ) . " at the party?"
+				=> $this->text_hover( "Did you see Matt  Mullenweg at the party?" ),
+			"Did you see " . $this->expected_text( 'Kónståntîn český คำถาม 問題和答案 Поделитьс', "Kónståntîn\nčeský\tคำถาม\n\t問題和答案   Поделитьс" ) . " at the party?"
+				=> $this->text_hover( "Did you see Kónståntîn\nčeský\tคำถาม\n\t問題和答案   Поделитьс at the party?" ),
+		);
+
+		foreach ( $expected as $expect => $actual ) {
+			$this->assertEquals( $expect, $actual );
+		}
+	}
+
 
 	public function test_hovers_multibyte_text_once_via_setting() {
 		$linked = $this->expected_text( '漢字はユニコード' );
