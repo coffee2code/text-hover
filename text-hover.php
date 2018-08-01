@@ -8,7 +8,7 @@
  * License:     GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: text-hover
- * Description: Add hover text to regular text in posts. Handy for providing explanations of names, terms, phrases, and acronyms mentioned in your blog.
+ * Description: Add hover text to regular text in posts. Handy for providing explanations of names, terms, phrases, abbreviations, and acronyms mentioned in your blog.
  *
  * Compatible with WordPress 4.7+ through 4.9+.
  *

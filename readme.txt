@@ -8,7 +8,7 @@ Requires at least: 4.7
 Tested up to: 4.9
 Stable tag: 3.7.1
 
-Add hover text to regular text in posts. Handy for providing explanations of names, terms, phrases, and acronyms mentioned in posts/pages.
+Add hover text to regular text in posts. Handy for providing explanations of names, terms, phrases, abbreviations, and acronyms mentioned in posts/pages.
 
 
 == Description ==
@@ -241,6 +241,7 @@ add_filter( 'c2c_text_hover_use_pretty_tooltips', '__return_false' );`
     * New: Add header comments to bootstrap
 * Change: Note compatibility through WP 4.9+
 * Change: Drop compatibility with version of WP older than 4.7.
+* Change: Tweak plugin description
 * Change: Minor code reformatting
 * Change: Rename readme.txt section from 'Filters' to 'Hooks'
 * Change: Modify formatting of hook name in readme to prevent being uppercased when shown in the Plugin Directory
