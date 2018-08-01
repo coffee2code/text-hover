@@ -209,8 +209,9 @@ add_filter( 'c2c_text_hover_use_pretty_tooltips', '__return_false' );`
 = () =
 * New: Ensure longer, more precise link strings match before shorter strings that might also match, regardless of order defined
 * New: Add support for finding text to hover that may span more than one line or whose internal spaces vary in number and type
-* Fix: Prevent hover text from being embedded within over hover text
+* Fix: Prevent hover text from being embedded within other hover text
 * Change: Switch for using deprecated 'acronym' tag to using 'abbr'
+* Change: Display fancy hover text as white text on a dark gray background
 * Change: Cast return values of hooks to expected data types
 * Change: Add version number when enqueuing CSS files
 * Change: Update plugin framework to 048
