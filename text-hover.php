@@ -190,7 +190,7 @@ final class c2c_TextHover extends c2c_TextHover_Plugin_048 {
 		echo '<p>' . __( 'Define terms/abbreviations and hovertext explanations here. The format should be like this:', 'text-hover' ) . '</p>';
 		echo "<blockquote><code>WP => WordPress</code></blockquote>";
 		echo '<p>' . __( 'Where <code>WP</code> is the term, acronym, or phrase you intend to use in your posts, and the <code>WordPress</code> would be what you want to appear in a hover tooltip when a visitor hovers their mouse over the term.', 'text-hover' );
-		echo ' ' . __( 'See how things look: <abbr title="WordPress" style="border-bottom:1px dashed #000;">WP</abbr>.', 'text-hover' ) . '</p>';
+		echo ' ' . __( 'See how things look: <abbr title="WordPress" class="c2c-text-hover">WP</abbr> (better-looking) or <abbr title="WordPress">WP</abbr> (basic).', 'text-hover' ) . '</p>';
 		echo '<p>' . __( 'Other considerations:', 'text-hover' ) . '</p>';
 		echo '<ul class="c2c-plugin-list"><li>';
 		echo __( 'Terms and abbreviations are assumed to be whole words within your posts (i.e. they are immediately prepended by some sort of space character (space, tab, etc) and are immediately appended by a space character or punctuation (which can include any of: ?!.,-+)]})', 'text-hover' );

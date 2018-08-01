@@ -243,6 +243,7 @@ add_filter( 'c2c_text_hover_use_pretty_tooltips', '__return_false' );`
 * Change: Drop compatibility with version of WP older than 4.7.
 * Change: Tweak plugin description
 * Change: Minor code reformatting
+* Change: Add example of better looking tooltip alongside basic tooltip example
 * Change: Rename readme.txt section from 'Filters' to 'Hooks'
 * Change: Modify formatting of hook name in readme to prevent being uppercased when shown in the Plugin Directory
 * Change: Update installation instruction to prefer built-in installer over .zip file
