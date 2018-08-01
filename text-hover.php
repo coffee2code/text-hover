@@ -198,7 +198,7 @@ final class c2c_TextHover extends c2c_TextHover_Plugin_048 {
 		echo '</em></strong></li><li><strong><em>';
 		echo __( 'Hovertexts must not span multiple lines.', 'text-hover' );
 		echo '</em></strong></li><li><strong><em>';
-		echo __( 'Don\'t use HTML in the hovertext.', 'text-hover' );
+		echo __( 'The use of HTML in hovertext should be limited to basic formatting tags, and only if you have better looking tooltips enabled.', 'text-hover' );
 		echo '</em></strong></li></ul>';
 	}
 
