@@ -24,9 +24,12 @@
 /*
  * TODO:
  * - Shortcode and template tag to display listing of all supported text hovers (filterable)
- * - Switch to pure-CSS tooltips. See: https://medium.com/two-factor-authenticity/tiny-design-bite-transitioning-tooltip-text-with-pseudo-elements-hover-states-82fbe00e8c33
- * - (3.8) As done in Linkify Text, make it so order is not as important so longer, more precise text matches first.
-*/
+ * - Switch to pure-CSS tooltips? See: https://medium.com/two-factor-authenticity/tiny-design-bite-transitioning-tooltip-text-with-pseudo-elements-hover-states-82fbe00e8c33
+ * - Metabox to display listing of all supported text hovers
+ * - Smarter input form for text hovers. Repeatable field with sub-fields name and hover text. (This will allow having multiline hover text).
+ * - Ability for users to set the text color, background color, and border color of their tooltips.
+ * - Settings page text area for testing sample text. Use AJAX to fetch parsed text from server for display. Applies same styles as it would on frontend.
+ */
 
 /*
 	Copyright (c) 2007-2018 by Scott Reilly (aka coffee2code)
