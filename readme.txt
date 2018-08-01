@@ -458,6 +458,9 @@ add_filter( 'c2c_text_hover_use_pretty_tooltips', '__return_false' );`
 
 == Upgrade Notice ==
 
+= 3.8 =
+Major update: changed default appearance of better-looking tooltip; switched to using `abbr` tag instead of `acronym` tag; misc improvements; updated plugin framework to 048; verified compatibility through WP 4.9; dropped compatibility with WP older than 4.7; updated copyright date (2018)
+
 = 3.7.1 =
 Minor bugfix release: updated qTip2 library, which fixes a JavaScript error it had; updated plugin framework to 044.
 
