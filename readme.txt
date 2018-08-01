@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 4.7
 Tested up to: 4.9
-Stable tag: 3.7.1
+Stable tag: 3.8
 
 Add hover text to regular text in posts. Handy for providing explanations of names, terms, phrases, abbreviations, and acronyms mentioned in posts/pages.
 
@@ -206,7 +206,7 @@ add_filter( 'c2c_text_hover_use_pretty_tooltips', '__return_false' );`
 
 == Changelog ==
 
-= () =
+= 3.8 (2018-08-01) =
 * New: Ensure longer, more precise link strings match before shorter strings that might also match, regardless of order defined
 * New: Add support for finding text to hover that may span more than one line or whose internal spaces vary in number and type
 * Fix: Prevent hover text from being embedded within other hover text
