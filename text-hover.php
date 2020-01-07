@@ -107,7 +107,7 @@ final class c2c_TextHover extends c2c_TextHover_Plugin_048 {
 	/**
 	 * Handles uninstallation tasks, such as deleting plugin options.
 	 */
-	public function uninstall() {
+	public static function uninstall() {
 		delete_option( self::SETTING_NAME );
 	}
 
