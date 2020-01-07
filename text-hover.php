@@ -6,7 +6,7 @@
  * Author:      Scott Reilly
  * Author URI:  http://coffee2code.com/
  * License:     GPLv2 or later
- * License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: text-hover
  * Description: Add hover text to regular text in posts. Handy for providing explanations of names, terms, phrases, abbreviations, and acronyms mentioned in your blog.
  *
