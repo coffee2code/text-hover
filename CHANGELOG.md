@@ -5,6 +5,7 @@
 * Change: Note compatibility through WP 5.3+
 * Change: Update copyright date (2020)
 * Change: Update License URI to be HTTPS
+* Change: Split paragraph in README.md's "Support" section into two
 
 ## 3.8 _(2018-08-01)_
 * New: Ensure longer, more precise link strings match before shorter strings that might also match, regardless of order defined
