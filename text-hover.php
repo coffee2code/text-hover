@@ -378,6 +378,6 @@ final class c2c_TextHover extends c2c_TextHover_Plugin_048 {
 
 } // end c2c_TextHover
 
-c2c_TextHover::get_instance();
+add_action( 'plugins_loaded', array( 'c2c_TextHover', 'get_instance' ) );
 
 endif; // end if !class_exists()

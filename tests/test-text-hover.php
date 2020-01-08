@@ -175,6 +175,10 @@ class Text_Hover_Test extends WP_UnitTestCase {
 		$this->assertTrue( is_a( c2c_TextHover::get_instance(), 'c2c_TextHover' ) );
 	}
 
+	public function test_hooks_plugins_loaded() {
+		$this->assertEquals( 10, has_action( 'plugins_loaded', array( 'c2c_TextHover', 'get_instance' ) ) );
+	}
+
 	public function test_hovers_text() {
 		$expected = $this->expected_text( 'coffee2code' );
 

@@ -2,6 +2,7 @@
 
 ## _(in-progress)_
 * Fix: Define `uninstall()` as being `static`
+* Change: Initialize plugin on `plugins_loaded` action instead of on load
 * New: Add CHANGELOG.md and move all but most recent changelog entries into it
 * Unit tests:
      * Change: Update unit test install script and bootstrap to use latest WP unit test repo
