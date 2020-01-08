@@ -290,7 +290,7 @@ final class c2c_TextHover extends c2c_TextHover_Plugin_049 {
 	 * @return string Text with hovertexts already processed.
 	 */
 	public function text_hover( $text ) {
-		$options        = $this->get_options();
+		$options = $this->get_options();
 
 		/**
 		 * Filters the list of text that have associated hover text.
@@ -301,7 +301,7 @@ final class c2c_TextHover extends c2c_TextHover_Plugin_049 {
 		 *                             respective hover text. Default is value
 		 *                             set in plugin settings.
 		 */
-		$text_to_hover  = (array) apply_filters( 'c2c_text_hover',                $options['text_to_hover'] );
+		$text_to_hover = (array) apply_filters( 'c2c_text_hover', $options['text_to_hover'] );
 
 		/**
 		 * Filters if text matching for text hover should be case sensitive.
@@ -312,7 +312,7 @@ final class c2c_TextHover extends c2c_TextHover_Plugin_049 {
 		 *                             case sensitive? Default is value set in
 		 *                             plugin settings, which is initially true.
 		 */
-		$case_sensitive = (bool)  apply_filters( 'c2c_text_hover_case_sensitive', $options['case_sensitive'] );
+		$case_sensitive = (bool) apply_filters( 'c2c_text_hover_case_sensitive', $options['case_sensitive'] );
 
 		/**
 		 * Filters if text hovering should be limited to once per term per piece
@@ -324,9 +324,9 @@ final class c2c_TextHover extends c2c_TextHover_Plugin_049 {
 		 *                           per term per post? Default is value set in
 		 *                           plugin settings, which is initially false.
 		 */
-		$limit          = (bool)  apply_filters( 'c2c_text_hover_once',           $options['replace_once'] );
+		$limit = (bool) apply_filters( 'c2c_text_hover_once', $options['replace_once'] );
 
-		$preg_flags     = $case_sensitive ? 'ms' : 'msi';
+		$preg_flags = $case_sensitive ? 'ms' : 'msi';
 		$mb_regex_encoding = null;
 
 		$text = ' ' . $text . ' ';
