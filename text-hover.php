@@ -247,10 +247,12 @@ final class c2c_TextHover extends c2c_TextHover_Plugin_049 {
 			return;
 		}
 
-		wp_enqueue_style( 'qtip2', plugins_url( 'assets/jquery.qtip.min.css', __FILE__ ), array(), '3.0.3' );
+		$qtip2_version = '3.0.3';
+
+		wp_enqueue_style( 'qtip2', plugins_url( 'assets/jquery.qtip.min.css', __FILE__ ), array(), $qtip2_version );
 		wp_enqueue_style( 'text-hover', plugins_url( 'assets/text-hover.css', __FILE__ ), array(), $this->version );
 
-		wp_enqueue_script( 'qtip2', plugins_url( 'assets/jquery.qtip.min.js', __FILE__ ), array( 'jquery' ), '2.2.0', true );
+		wp_enqueue_script( 'qtip2', plugins_url( 'assets/jquery.qtip.min.js', __FILE__ ), array( 'jquery' ), $qtip2_version, true );
 		wp_enqueue_script( 'text-hover', plugins_url( 'assets/text-hover.js', __FILE__ ), array( 'jquery', 'qtip2' ), $this->version, true );
 	}
 

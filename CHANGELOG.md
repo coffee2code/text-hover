@@ -11,6 +11,7 @@
     * Ensure a `textarea` displays as a block to prevent orphaning of subsequent help text
     * Note compatibility through WP 5.1+
     * Update copyright date (2019)
+* Change: Variablize the qTip2 version and use it when enqueuing its JS and CSS
 * New: Add CHANGELOG.md and move all but most recent changelog entries into it
 * New: Add inline documentation for hooks
 * Unit tests:
