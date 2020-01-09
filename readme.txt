@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 4.7
 Tested up to: 5.3
-Stable tag: 3.8
+Stable tag: 3.9
 
 Add hover text to regular text in posts. Handy for providing explanations of names, terms, phrases, abbreviations, and acronyms mentioned in posts/pages.
 
@@ -237,6 +237,36 @@ add_filter( 'c2c_text_hover_use_pretty_tooltips', '__return_false' );`
 
 == Changelog ==
 
+= 3.9 (2020-01-08) =
+Highlights:
+
+* This minor release adds support for select third-party plugins (Advanced Custom Fields, Elementor), tweaks plugin initialization, fixes a minor bug, updates the plugin framework to 049, notes compatibility through WP 5.3+, creates CHANGELOG.md, and updates copyright date (2020).
+
+Details:
+
+* New: Add support for third-party plugins: Advanced Custom Fields, Elementor
+* New: Add filter `c2c_text_hover_third_party_filters` for filtering third party filters
+* Fix: Define `uninstall()` as being `static`
+* Change: Initialize plugin on `plugins_loaded` action instead of on load
+* Change: Update plugin framework to 049
+    * 049:
+    * Correct last arg in call to `add_settings_field()` to be an array
+    * Wrap help text for settings in `label` instead of `p`
+    * Only use `label` for help text for checkboxes, otherwise use `p`
+    * Ensure a `textarea` displays as a block to prevent orphaning of subsequent help text
+    * Note compatibility through WP 5.1+
+    * Update copyright date (2019)
+* Change: Variablize the qTip2 version and use it when enqueuing its JS and CSS
+* New: Add CHANGELOG.md and move all but most recent changelog entries into it
+* New: Add inline documentation for hooks
+* Unit tests:
+     * Change: Update unit test install script and bootstrap to use latest WP unit test repo
+     * Change: Explicitly check hook priority when checking that hook is registered
+* Change: Note compatibility through WP 5.3+
+* Change: Update copyright date (2020)
+* Change: Update License URI to be HTTPS
+* Change: Split paragraph in README.md's "Support" section into two
+
 = 3.8 (2018-08-01) =
 * New: Ensure longer, more precise link strings match before shorter strings that might also match, regardless of order defined
 * New: Add support for finding text to hover that may span more than one line or whose internal spaces vary in number and type
@@ -295,6 +325,9 @@ _Full changelog is available in [CHANGELOG.md](https://github.com/coffee2code/te
 
 
 == Upgrade Notice ==
+
+= 3.9 =
+Recommended update: added support for select third-party plugins (Advanced Custom Fields, Elementor), tweaked plugin initialization, minor bugfix, updated plugin framework to 049, noted compatibility through WP 5.3+, created CHANGELOG.md, and updated copyright date (2020)
 
 = 3.8 =
 Major update: changed default appearance of better-looking tooltip; switched to using `abbr` tag instead of `acronym` tag; misc improvements; updated plugin framework to 048; verified compatibility through WP 4.9; dropped compatibility with WP older than 4.7; updated copyright date (2018)

@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Text Hover
- * Version:     3.8
+ * Version:     3.9
  * Plugin URI:  http://coffee2code.com/wp-plugins/text-hover/
  * Author:      Scott Reilly
  * Author URI:  http://coffee2code.com/
@@ -18,7 +18,7 @@
  *
  * @package Text_Hover
  * @author  Scott Reilly
- * @version 3.8
+ * @version 3.9
  */
 
 /*
@@ -29,6 +29,7 @@
  * - Smarter input form for text hovers. Repeatable field with sub-fields name and hover text. (This will allow having multiline hover text).
  * - Ability for users to set the text color, background color, and border color of their tooltips.
  * - Settings page text area for testing sample text. Use AJAX to fetch parsed text from server for display. Applies same styles as it would on frontend.
+ * - Add setting to specify additional filters to be handled by the plugin.
  */
 
 /*
@@ -89,7 +90,7 @@ final class c2c_TextHover extends c2c_TextHover_Plugin_049 {
 	 * Constructor.
 	 */
 	protected function __construct() {
-		parent::__construct( '3.8', 'text-hover', 'c2c', __FILE__, array() );
+		parent::__construct( '3.9', 'text-hover', 'c2c', __FILE__, array() );
 		register_activation_hook( __FILE__, array( __CLASS__, 'activation' ) );
 
 		return self::$instance = $this;

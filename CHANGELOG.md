@@ -1,6 +1,13 @@
 # Changelog
 
-## _(in-progress)_
+## 3.9 _(2020-01-08)_
+
+### Highlights:
+
+This minor release adds support for select third-party plugins (Advanced Custom Fields, Elementor), tweaks plugin initialization, fixes a minor bug, updates the plugin framework to 049, notes compatibility through WP 5.3+, creates CHANGELOG.md, and updates copyright date (2020).
+
+### Details:
+
 * New: Add support for third-party plugins: Advanced Custom Fields, Elementor
 * New: Add filter `c2c_text_hover_third_party_filters` for filtering third party filters
 * Fix: Define `uninstall()` as being `static`
