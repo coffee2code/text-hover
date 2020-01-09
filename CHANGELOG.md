@@ -123,7 +123,7 @@
 * Regenerate .pot
 
 ## 3.5.1 _(2014-01-28)_
-* Fix logic evaluation to properly honor replace_once checkbox value
+* Fix logic evaluation to properly honor `replace_once` checkbox value
 * Minor code reformatting
 
 ## 3.5 _(2014-01-05)_
@@ -149,7 +149,7 @@
 * Add checks to prevent execution of code if file is directly accessed
 * Re-license as GPLv2 or later (from X11)
 * Add 'License' and 'License URI' header tags to readme.txt and plugin file
-* Use explicit path for require_once()
+* Use explicit path for `require_once()`
 * Discontinue use of PHP4-style constructor
 * Discontinue use of explicit pass-by-reference for objects
 * Remove ending PHP close tag
