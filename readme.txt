@@ -89,6 +89,10 @@ By default, yes. There is a setting you can change so that only the first occurr
 
 Yes, but only if you have the pretty tooltips enabled (via settings or the filter). The class you want to style in your custom CSS is '.text-hover-qtip'.
 
+= Does this plugin support any third-party plugins? =
+
+Yes, this plugin has built-in support for Advanced Custom Fields and Elementor.
+
 = Does this plugin include unit tests? =
 
 Yes.
@@ -96,7 +100,7 @@ Yes.
 
 == Hooks ==
 
-The plugin exposes five filters for hooking. Typically, the code to utilize these hooks would go inside your active theme's functions.php file. Bear in mind that all of the features controlled by these filters are configurable via the plugin's settings page. These filters are likely only of interest to advanced users able to code.
+The plugin exposes a number of filters for hooking. Typically, the code to utilize these hooks would go inside your active theme's functions.php file. Bear in mind that all of the features controlled by these filters are configurable via the plugin's settings page. These filters are likely only of interest to advanced users able to code.
 
 **c2c_text_hover_filters (filter)**
 
@@ -120,6 +124,33 @@ function more_text_hovers( $filters ) {
 	return $filters;
 }
 add_filter( 'c2c_text_hover_filters', 'more_text_hovers' );
+`
+
+**c2c_text_hover_third_party_filters (filter)**
+
+The 'c2c_text_hover_third_party_filters' hook allows you to customize what third-party hooks get text hover applied to them. Note: the results of this filter are then passed through the `c2c_text_hover_filters` filter, so third-party filters can be modified using either hook.
+
+Arguments:
+
+* $filters (array): The third-party filters whose text should be auto-hyperlinked. Default `array( 'acf/format_value/type=text', 'acf/format_value/type=textarea', 'acf/format_value/type=url', 'acf_the_content', 'elementor/frontend/the_content', 'elementor/widget/render_content' )`.
+
+Example:
+
+`
+/**
+ * Stop text hovers for ACF text fields and add text hovers for a custom filter.
+ *
+ * @param array $filters
+ * @return array
+ */
+function my_c2c_text_hover_third_party_filters( $filters ) {
+	// Remove a filter already in the list.
+	unset( $filters[ 'acf/format_value/type=text' ] );
+	// Add a filter to the list.
+	$filters[] = 'my_plugin_filter';
+	return $filters;
+}
+add_filter( 'c2c_text_hover_third_party_filters', 'my_c2c_text_hover_third_party_filters' );
 `
 
 **c2c_text_hover (filter)**

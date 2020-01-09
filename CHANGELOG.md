@@ -1,6 +1,8 @@
 # Changelog
 
 ## _(in-progress)_
+* New: Add support for third-party plugins: Advanced Custom Fields, Elementor
+* New: Add filter `c2c_text_hover_third_party_filters` for filtering third party filters
 * Fix: Define `uninstall()` as being `static`
 * Change: Initialize plugin on `plugins_loaded` action instead of on load
 * Change: Update plugin framework to 049

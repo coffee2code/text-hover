@@ -41,6 +41,7 @@ class Text_Hover_Test extends WP_UnitTestCase {
 		remove_filter( 'c2c_text_hover_case_sensitive', '__return_false' );
 		remove_filter( 'c2c_text_hover_comments',       '__return_true' );
 		remove_filter( 'c2c_text_hover_filters',        array( $this, 'add_custom_filter' ) );
+		remove_filter( 'c2c_text_hover_third_party_filters', array( $this, 'add_custom_filter' ) );
 	}
 
 
@@ -63,6 +64,17 @@ class Text_Hover_Test extends WP_UnitTestCase {
 		return array(
 			array( 'get_comment_text' ),
 			array( 'get_comment_excerpt' ),
+		);
+	}
+
+	public static function get_third_party_filters() {
+		return array(
+			array( 'acf/format_value/type=text' ),
+			array( 'acf/format_value/type=textarea' ),
+			array( 'acf/format_value/type=url' ),
+			array( 'acf_the_content' ),
+			array( 'elementor/frontend/the_content' ),
+			array( 'elementor/widget/render_content' ),
 		);
 	}
 
@@ -487,10 +499,30 @@ class Text_Hover_Test extends WP_UnitTestCase {
 		$this->assertGreaterThan( 0, strpos( apply_filters( $filter, 'a coffee2code' ), $expected ) );
 	}
 
+	/**
+	 * @dataProvider get_third_party_filters
+	 */
+	public function test_hover_applies_to_third_party_filters( $filter ) {
+		$expected = $this->expected_text( 'coffee2code' );
+
+		$this->assertEquals( 3, has_filter( $filter, array( c2c_TextHover::get_instance(), 'text_hover' ) ) );
+		$this->assertGreaterThan( 0, strpos( apply_filters( $filter, 'a coffee2code' ), $expected ) );
+	}
+
 	public function test_hover_applies_to_custom_filter_via_filter() {
 		$this->assertEquals( 'coffee2code', apply_filters( 'custom_filter', 'coffee2code' ) );
 
 		add_filter( 'c2c_text_hover_filters', array( $this, 'add_custom_filter' ) );
+
+		c2c_TextHover::get_instance()->register_filters(); // Plugins would typically register their filter before this originally fires
+
+		$this->assertEquals( $this->expected_text( 'coffee2code' ), apply_filters( 'custom_filter', 'coffee2code' ) );
+	}
+
+	public function test_hover_applies_to_custom_third_party_filter_via_filter() {
+		$this->assertEquals( 'coffee2code', apply_filters( 'custom_filter', 'coffee2code' ) );
+
+		add_filter( 'c2c_text_hover_third_party_filters', array( $this, 'add_custom_filter' ) );
 
 		c2c_TextHover::get_instance()->register_filters(); // Plugins would typically register their filter before this originally fires
 
