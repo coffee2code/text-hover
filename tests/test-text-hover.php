@@ -4,6 +4,8 @@ defined( 'ABSPATH' ) or die();
 
 class Text_Hover_Test extends WP_UnitTestCase {
 
+	protected $captured_c2c_text_hover_filters = array();
+
 	protected static $text_to_hover = array(
 		'WP Tavern'      => 'Site for WordPress-related news',
 		'WP'             => 'WordPress',
@@ -36,12 +38,15 @@ class Text_Hover_Test extends WP_UnitTestCase {
 		// Reset options
 		c2c_TextHover::get_instance()->reset_options();
 
+		$captured_c2c_text_hover_filters = array();
+
 		remove_filter( 'c2c_text_hover',                array( $this, 'add_text_to_hover' ) );
 		remove_filter( 'c2c_text_hover_once',           '__return_true' );
 		remove_filter( 'c2c_text_hover_case_sensitive', '__return_false' );
 		remove_filter( 'c2c_text_hover_comments',       '__return_true' );
 		remove_filter( 'c2c_text_hover_filters',        array( $this, 'add_custom_filter' ) );
 		remove_filter( 'c2c_text_hover_third_party_filters', array( $this, 'add_custom_filter' ) );
+		remove_filter( 'c2c_text_hover_filters',             array( $this, 'capture_c2c_text_hover_filters' ) );
 	}
 
 
@@ -157,6 +162,10 @@ class Text_Hover_Test extends WP_UnitTestCase {
 	public function add_custom_filter( $filters ) {
 		$filters[] = 'custom_filter';
 		return $filters;
+	}
+
+	public function capture_c2c_text_hover_filters( $filters ) {
+		return $this->captured_c2c_text_hover_filters = $filters;
 	}
 
 
@@ -507,6 +516,22 @@ class Text_Hover_Test extends WP_UnitTestCase {
 
 		$this->assertEquals( 3, has_filter( $filter, array( c2c_TextHover::get_instance(), 'text_hover' ) ) );
 		$this->assertGreaterThan( 0, strpos( apply_filters( $filter, 'a coffee2code' ), $expected ) );
+	}
+
+	public function test_third_party_filters_are_part_of_c2c_text_hover_filters() {
+		$filters = array_map(
+			function ( $x ) { return reset( $x ); },
+			array_merge(
+				$this->get_third_party_filters(),
+				$this->get_default_filters()
+			)
+		 );
+
+		add_filter( 'c2c_text_hover_filters', array( $this, 'capture_c2c_text_hover_filters' ) );
+
+		c2c_TextHover::get_instance()->register_filters(); // Plugins would typically register their filter before this originally fires
+
+		$this->assertSame( $filters, $this->captured_c2c_text_hover_filters );
 	}
 
 	public function test_hover_applies_to_custom_filter_via_filter() {
