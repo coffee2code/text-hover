@@ -483,7 +483,7 @@ class Text_Hover_Test extends WP_UnitTestCase {
 	public function test_hover_applies_to_default_filters( $filter ) {
 		$expected = $this->expected_text( 'coffee2code' );
 
-		$this->assertNotFalse( has_filter( $filter, array( c2c_TextHover::get_instance(), 'text_hover' ), 3 ) );
+		$this->assertEquals( 3, has_filter( $filter, array( c2c_TextHover::get_instance(), 'text_hover' ) ) );
 		$this->assertGreaterThan( 0, strpos( apply_filters( $filter, 'a coffee2code' ), $expected ) );
 	}
 
@@ -495,7 +495,7 @@ class Text_Hover_Test extends WP_UnitTestCase {
 
 		add_filter( 'c2c_text_hover_comments', '__return_true' );
 
-		$this->assertNotFalse( has_filter( $filter, array( c2c_TextHover::get_instance(), 'text_hover_comment_text' ), 11 ) );
+		$this->assertEquals( 11, has_filter( $filter, array( c2c_TextHover::get_instance(), 'text_hover_comment_text' ) ) );
 		$this->assertGreaterThan( 0, strpos( apply_filters( $filter, 'a coffee2code' ), $expected ) );
 	}
 
