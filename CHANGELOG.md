@@ -4,6 +4,7 @@
 * Fix: Revert to apply to the `the_excerpt` filter, which was mistakenly changed to `get_the_excerpt`
 * Change: Update some inline documentation relating to third-party plugin hook support
 * Unit tests:
+    * Change: Implement a more generic approach to capture default values provided for a filter
     * New: Add test to verify the lack of any defined hover text doesn't remove zeroes from text
 
 ## 3.9 _(2020-01-08)_

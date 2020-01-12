@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) or die();
 
 class Text_Hover_Test extends WP_UnitTestCase {
 
-	protected $captured_c2c_text_hover_filters = array();
+	protected $captured_filter_value = array();
 
 	protected static $text_to_hover = array(
 		'WP Tavern'      => 'Site for WordPress-related news',
@@ -38,7 +38,7 @@ class Text_Hover_Test extends WP_UnitTestCase {
 		// Reset options
 		c2c_TextHover::get_instance()->reset_options();
 
-		$captured_c2c_text_hover_filters = array();
+		$this->captured_filter_value = array();
 
 		remove_filter( 'c2c_text_hover',                array( $this, 'add_text_to_hover' ) );
 		remove_filter( 'c2c_text_hover_once',           '__return_true' );
@@ -46,7 +46,6 @@ class Text_Hover_Test extends WP_UnitTestCase {
 		remove_filter( 'c2c_text_hover_comments',       '__return_true' );
 		remove_filter( 'c2c_text_hover_filters',        array( $this, 'add_custom_filter' ) );
 		remove_filter( 'c2c_text_hover_third_party_filters', array( $this, 'add_custom_filter' ) );
-		remove_filter( 'c2c_text_hover_filters',             array( $this, 'capture_c2c_text_hover_filters' ) );
 	}
 
 
@@ -164,8 +163,8 @@ class Text_Hover_Test extends WP_UnitTestCase {
 		return $filters;
 	}
 
-	public function capture_c2c_text_hover_filters( $filters ) {
-		return $this->captured_c2c_text_hover_filters = $filters;
+	public function capture_filter_value( $value ) {
+		return $this->captured_filter_value[ current_filter() ] = $value;
 	}
 
 
@@ -537,11 +536,13 @@ class Text_Hover_Test extends WP_UnitTestCase {
 			)
 		 );
 
-		add_filter( 'c2c_text_hover_filters', array( $this, 'capture_c2c_text_hover_filters' ) );
+		add_filter( 'c2c_text_hover_filters', array( $this, 'capture_filter_value' ) );
 
 		c2c_TextHover::get_instance()->register_filters(); // Plugins would typically register their filter before this originally fires
 
-		$this->assertSame( $filters, $this->captured_c2c_text_hover_filters );
+		$this->assertSame( $filters, $this->captured_filter_value[ 'c2c_text_hover_filters' ] );
+
+		remove_filter( 'c2c_text_hover_filters', array( $this, 'capture_filter_value' ) );
 	}
 
 	public function test_hover_applies_to_custom_filter_via_filter() {
