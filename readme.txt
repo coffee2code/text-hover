@@ -89,9 +89,9 @@ By default, yes. There is a setting you can change so that only the first occurr
 
 Yes, but only if you have the pretty tooltips enabled (via settings or the filter). The class you want to style in your custom CSS is '.text-hover-qtip'.
 
-= Does this plugin support any third-party plugins? =
+= Does this plugin explicitly support any third-party plugins? =
 
-Yes, this plugin has built-in support for Advanced Custom Fields and Elementor.
+Yes. While this plugin is compatible with many other plugins that modify post and widget text, this plugin has explicit built-in support for Advanced Custom Fields and Elementor, which provide additional content areas. This plugin provides hooks that can be used to enable compatibility with other plugins and themes.
 
 = Does this plugin include unit tests? =
 
@@ -132,7 +132,7 @@ The 'c2c_text_hover_third_party_filters' hook allows you to customize what third
 
 Arguments:
 
-* $filters (array): The third-party filters whose text should be auto-hyperlinked. Default `array( 'acf/format_value/type=text', 'acf/format_value/type=textarea', 'acf/format_value/type=url', 'acf_the_content', 'elementor/frontend/the_content', 'elementor/widget/render_content' )`.
+* $filters (array): The third-party filters whose text should have text hover applied. Default `array( 'acf/format_value/type=text', 'acf/format_value/type=textarea', 'acf/format_value/type=url', 'acf_the_content', 'elementor/frontend/the_content', 'elementor/widget/render_content' )`.
 
 Example:
 

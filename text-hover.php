@@ -173,13 +173,18 @@ final class c2c_TextHover extends c2c_TextHover_Plugin_049 {
 		 *
 		 * Currently supported plugins:
 		 * - Advanced Custom Fields
+		 *    'acf/format_value/type=text',
+		 *    'acf/format_value/type=textarea',
+		 *    'acf/format_value/type=url',
+		 *    'acf_the_content',
 		 * - Elementor
+		 *    'elementor/frontend/the_content',
+		 *    'elementor/widget/render_content',
 		 *
 		 * @since 3.9
 		 *
-		 * @param array $filters The filters that get processed for hover text.
-		 *                       Default ['the_content', 'get_the_excerpt',
-		 *                       'widget_text'].
+		 * @param array $filters The third party filters that get processed for
+		 *                       hover text. See filter inline docs for defaults.
 		 */
 		$filters = (array) apply_filters( 'c2c_text_hover_third_party_filters', array(
 			// Support for Advanced Custom Fields plugin.

@@ -1,5 +1,8 @@
 # Changelog
 
+## _(in-progress)_
+* Change: Update some inline documentation relating to third-party plugin hook support
+
 ## 3.9 _(2020-01-08)_
 
 ### Highlights:
