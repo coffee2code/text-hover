@@ -200,6 +200,16 @@ class Text_Hover_Test extends WP_UnitTestCase {
 		$this->assertEquals( 10, has_action( 'plugins_loaded', array( 'c2c_TextHover', 'get_instance' ) ) );
 	}
 
+	public function test_no_text_change_when_no_hovers_defined() {
+		$text = 'This is a 2019 test.';
+
+		$this->set_option( array( 'text_to_hover' => '' ) );
+
+		$this->assertEquals( $text, $this->text_hover( $text ) );
+
+		$this->set_option( array( 'text_to_hover' => $this->text_text_hovers() ) );
+	}
+
 	public function test_hovers_text() {
 		$expected = $this->expected_text( 'coffee2code' );
 
