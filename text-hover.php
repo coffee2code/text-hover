@@ -198,7 +198,7 @@ final class c2c_TextHover extends c2c_TextHover_Plugin_049 {
 		) );
 
 		// Add in relevant stock WP filters.
-		$filters = array_merge( $filters, array( 'the_content', 'get_the_excerpt', 'widget_text' ) );
+		$filters = array_merge( $filters, array( 'the_content', 'the_excerpt', 'widget_text' ) );
 
 		/**
 		 * Filters the hooks that get processed for hover text.
@@ -206,7 +206,7 @@ final class c2c_TextHover extends c2c_TextHover_Plugin_049 {
 		 * @since 3.0
 		 *
 		 * @param array $filters The filters that get processed for hover text.
-		 *                       Default ['the_content', 'get_the_excerpt',
+		 *                       Default ['the_content', 'the_excerpt',
 		 *                       'widget_text'].
 		 */
 		$filters = (array) apply_filters( 'c2c_text_hover_filters', $filters );

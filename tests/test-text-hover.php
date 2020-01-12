@@ -60,7 +60,7 @@ class Text_Hover_Test extends WP_UnitTestCase {
 	public static function get_default_filters() {
 		return array(
 			array( 'the_content' ),
-			array( 'get_the_excerpt' ),
+			array( 'the_excerpt' ),
 			array( 'widget_text' ),
 		);
 	}
