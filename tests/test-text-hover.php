@@ -206,7 +206,7 @@ class Text_Hover_Test extends WP_UnitTestCase {
 
 		$this->assertEquals( $text, $this->text_hover( $text ) );
 
-		$this->set_option( array( 'text_to_hover' => $this->text_text_hovers() ) );
+		$this->set_option( array( 'text_to_hover' => $this->text_hovers() ) );
 	}
 
 	public function test_hovers_text() {
