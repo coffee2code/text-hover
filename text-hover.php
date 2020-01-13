@@ -30,6 +30,7 @@
  * - Ability for users to set the text color, background color, and border color of their tooltips.
  * - Settings page text area for testing sample text. Use AJAX to fetch parsed text from server for display. Applies same styles as it would on frontend.
  * - Add setting to specify additional filters to be handled by the plugin.
+ * - Add support for `c2c_text_hover_filter_priority`, similar to what Text Replace does
  */
 
 /*
