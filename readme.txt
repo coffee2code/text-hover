@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 4.7
 Tested up to: 5.3
-Stable tag: 3.9
+Stable tag: 3.9.1
 
 Add hover text to regular text in posts. Handy for providing explanations of names, terms, phrases, abbreviations, and acronyms mentioned in posts/pages.
 
@@ -237,6 +237,14 @@ add_filter( 'c2c_text_hover_use_pretty_tooltips', '__return_false' );`
 
 == Changelog ==
 
+= 3.9.1 (2020-01-12) =
+* Fix: Revert to apply to the `the_excerpt` filter, which was mistakenly changed to `get_the_excerpt`
+* Change: Update some inline documentation relating to third-party plugin hook support
+* Unit tests:
+    * Change: Implement a more generic approach to capture default values provided for a filter
+    * New: Add test to verify the lack of any defined hover text doesn't remove zeroes from text
+    * Fix: Correct typo in function name used
+
 = 3.9 (2020-01-08) =
 Highlights:
 
@@ -310,21 +318,13 @@ Details:
 * Change: Update installation instruction to prefer built-in installer over .zip file
 * Change: Update copyright date (2018)
 
-= 3.7.1 (2016-06-10) =
-* Change: Update qTip2 to v3.0.3.
-    * Fixes a JS invalid .min.map file reference.
-    * Add plugin IE6 support.
-* Change: Update plugin framework to 044.
-    * Add `reset_caches()` to clear caches and memoized data. Use it in `reset_options()` and `verify_config()`.
-    * Add `verify_options()` with logic extracted from `verify_config()` for initializing default option attributes.
-    * Add  `add_option()` to add a new option to the plugin's configuration.
-    * Add filter 'sanitized_option_names' to allow modifying the list of whitelisted option names.
-    * Change: Refactor `get_option_names()`.
-
 _Full changelog is available in [CHANGELOG.md](https://github.com/coffee2code/text-hover/blob/master/CHANGELOG.md)._
 
 
 == Upgrade Notice ==
+
+= 3.9.1 =
+Minor bugfix release: restored hooking of WP's `the_excerpt` filter instead of `get_the_excerpt`, corrected some inline documentation, and made minor improvements to unit tests.
 
 = 3.9 =
 Recommended update: added support for select third-party plugins (Advanced Custom Fields, Elementor), tweaked plugin initialization, minor bugfix, updated plugin framework to 049, noted compatibility through WP 5.3+, created CHANGELOG.md, and updated copyright date (2020)
