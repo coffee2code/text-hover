@@ -439,7 +439,15 @@ final class c2c_TextHover extends c2c_TextHover_Plugin_049 {
 			/*
 			$regex = "(?!<.*?)([\s\'\"\.\x98\x99\x9c\x9d\xCB\x9C\xE2\x84\xA2\xC5\x93\xEF\xBF\xBD\(\[\{\)\>])($old_text)([\s\'\"\x98\x99\x9c\x9d\xCB\x9C\xE2\x84\xA2\xC5\x93\xEF\xBF\xBD\?\!\.\,\-\+\]\)\}\(\<])(?![^<>]*?>)";
 			*/
-			$regex = "\b($old_text)\b(?!([^<]+)?>)";
+
+			/* Could really just use this instead of next three lines of code. Though '<' and '>' are intentionally excluded here. */
+			//$regex_start_barrier = ctype_punct( $orig_old_text[0] )  ? '(?!\s)?' : '\b';
+			//$regex_end_barrier   = ctype_punct( $orig_old_text[-1] ) ? '(?!\s)?' : '\b';
+
+			$punctuation = array( '&', '#', '!', '?', '.', '-', '/', '\\', '%', '@', '$', '^', '*', '(', ')', '+', '=', '~', '`', '[', ']', '|', ':', ';', '"', "'" );
+			$regex_start_barrier = in_array( $orig_old_text[0], $punctuation )  ? '(?!\s)?' : '\b';
+			$regex_end_barrier   = in_array( $orig_old_text[-1], $punctuation ) ? '(?!\s)?' : '\b';
+			$regex = "$regex_start_barrier($old_text)$regex_end_barrier(?!([^<]+)?>)";
 
 			// If the text to be replaced has multibyte character(s), use
 			// mb_ereg_replace() if possible.

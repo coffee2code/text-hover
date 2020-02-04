@@ -1,6 +1,10 @@
 # Changelog
 
+## _(in-progress)_
+* Fix: Allow text to hover string to begin and/or end in punctuation.
+
 ## 3.9.1 _(2020-01-12)_
+
 * Fix: Revert to apply to the `the_excerpt` filter, which was mistakenly changed to `get_the_excerpt`
 * Change: Update some inline documentation relating to third-party plugin hook support
 * Unit tests:

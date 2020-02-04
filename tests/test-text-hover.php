@@ -20,6 +20,13 @@ class Text_Hover_Test extends WP_UnitTestCase {
 		'<em>Test</em>'  => 'This is text associated with a replacement that includes HTML tags.',
 		'piñata'         => 'Full of candy',
 		'Kónståntîn český คำถาม 問題和答案 Поделитьс' => 'lots of special characters',
+		'#something'     => 'blablabla',
+		'&anotherthing'  => 'thisandthat',
+		'@coffee2code'   => 'My Twitter handle',
+		'damn!'          => 'darn.',
+		'100%'           => '99+%',
+		':colon:'        => 'bookended with colons',
+		'_unknown'       => 'underscore unknown',
 	);
 
 	public static function setUpBeforeClass() {
@@ -396,6 +403,21 @@ class Text_Hover_Test extends WP_UnitTestCase {
 		}
 	}
 
+	public function test_hovers_search_strings_start_or_end_with_special_characters() {
+		$linked = $this->expected_text( '#something' );
+		$linked2 = $this->expected_text( 'damn!' );
+
+		$expected = array(
+			"i $linked" => $this->text_hover( 'i #something' ),
+			"$linked incinerate" => $this->text_hover( '#something incinerate' ),
+			"well hot $linked2" => $this->text_hover( 'well hot damn!' ),
+			"$linked2$linked" => $this->text_hover( 'damn!#something' ),
+		);
+
+		foreach ( $expected as $expect => $actual ) {
+			$this->assertEquals( $expect, $actual );
+		}
+	}
 
 	public function test_hovers_multibyte_text_once_via_setting() {
 		$linked = $this->expected_text( '漢字はユニコード' );
