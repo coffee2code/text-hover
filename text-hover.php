@@ -211,8 +211,22 @@ final class c2c_TextHover extends c2c_TextHover_Plugin_050 {
 		 *                       'widget_text'].
 		 */
 		$filters = (array) apply_filters( 'c2c_text_hover_filters', $filters );
+
 		foreach ( $filters as $filter ) {
-			add_filter( $filter, array( $this, 'text_hover' ), 3 );
+			/**
+			 * Filters the priority for attaching the text hover handler to a
+			 * hook.
+			 *
+			 * @since 4.0
+			 *
+			 * @param int    $priority The priority for the 'c2c_text_hover'
+			 *                         filter. Default 3 if 'when' setting
+			 *                         value is 'early', else 1000.
+			 * @param string $filter   The filter name.
+			 */
+			$priority = (int) apply_filters( 'c2c_text_hover_filter_priority', 3, $filter );
+
+			add_filter( $filter, array( $this, 'text_hover' ), $priority );
 		}
 
 		add_action( 'wp_enqueue_scripts',  array( $this, 'enqueue_scripts' ) );

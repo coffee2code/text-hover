@@ -1,6 +1,7 @@
 # Changelog
 
 ## _(in-progress)_
+* New: Add filter `c2c_text_hover_filter_priority` for filtering hook priority for text hover handler
 * New: Allow text to hover string to begin and/or end in punctuation.
 * Change: Update plugin framework to 050
     * 050:
@@ -14,6 +15,7 @@
     * New: Add `get_filter_names()` as a helper method for getting the default and third-party filter names
     * New: Add `unhook_default_filters()` as a helper method to unhook plugin's default filters hooked to `text_hover()`
     * New: Add test case for hover text that includes HTML
+    * Change: Add `$priority` argument to `test_hover_applies_to_default_filters()`
 
 ## 3.9.1 _(2020-01-12)_
 
