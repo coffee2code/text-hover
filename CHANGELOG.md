@@ -1,7 +1,7 @@
 # Changelog
 
 ## _(in-progress)_
-* Fix: Allow text to hover string to begin and/or end in punctuation.
+* New: Allow text to hover string to begin and/or end in punctuation.
 * Change: Update plugin framework to 050
     * 050:
     * Allow a hash entry to literally have '0' as a value without being entirely omitted when saved
