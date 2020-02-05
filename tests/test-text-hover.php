@@ -28,6 +28,8 @@ class Text_Hover_Test extends WP_UnitTestCase {
 		':colon:'        => 'bookended with colons',
 		'_unknown'       => 'underscore unknown',
 		'highlight'      => 'This <em>should</em> get rendered in most cases.',
+		'empty'          => '',
+		'false'          => false,
 	);
 
 	public static function setUpBeforeClass() {
@@ -292,6 +294,11 @@ class Text_Hover_Test extends WP_UnitTestCase {
 		$this->assertEquals( $text, $this->text_hover( $text ) );
 
 		$this->set_option( array( 'text_to_hover' => $this->text_hovers() ) );
+	}
+
+	public function test_no_hover_when_hover_string_is_falsey() {
+		$this->assertEquals( 'empty', $this->text_hover( 'empty' ) );
+		$this->assertEquals( 'false', $this->text_hover( 'false' ) );
 	}
 
 	public function test_hovers_text() {
