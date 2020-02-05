@@ -1,6 +1,7 @@
 # Changelog
 
 ## _(in-progress)_
+* New: Add new setting to allow control over when text hovers are handled early or late in text processing process
 * New: Add filter `c2c_text_hover_filter_priority` for filtering hook priority for text hover handler
 * New: Allow text to hover string to begin and/or end in punctuation.
 * Change: Update plugin framework to 050

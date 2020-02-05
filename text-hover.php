@@ -159,6 +159,13 @@ final class c2c_TextHover extends c2c_TextHover_Plugin_050 {
 				'label'            => __( 'Should better looking hover tooltips be shown?', 'text-hover' ),
 				'help'             => __( 'If unchecked, the default browser rendering of tooltips will be used.', 'text-hover' ),
 			),
+			'when' => array(
+				'input'            => 'select',
+				'default'          => 'early',
+				'options'          => array( 'early', 'late' ),
+				'label'            => __( 'When to process text?', 'text-replace' ),
+				'help'             => sprintf( __( "Text hover replacements can happen 'early' (before most other text processing for posts) or 'late' (after most other text processing for posts). By default the plugin handles text early, but depending on the replacements you've defined and the plugins you're using, you can eliminate certain conflicts by switching to 'late'. Finer-grained control can be achieved via the <code>%s</code> filter.", 'text-hover' ), 'c2c_text_hover_filter_priority' ),
+			),
 		);
 	}
 
@@ -166,6 +173,8 @@ final class c2c_TextHover extends c2c_TextHover_Plugin_050 {
 	 * Override the plugin framework's register_filters() to actually actions against filters.
 	 */
 	public function register_filters() {
+		$options = $this->get_options();
+
 		/**
 		 * Filters third party plugin/theme hooks that get processed for hover text.
 		 *
@@ -212,6 +221,8 @@ final class c2c_TextHover extends c2c_TextHover_Plugin_050 {
 		 */
 		$filters = (array) apply_filters( 'c2c_text_hover_filters', $filters );
 
+		$default_priority = ( 'late' === $options[ 'when'] ) ? 1000 : 3;
+
 		foreach ( $filters as $filter ) {
 			/**
 			 * Filters the priority for attaching the text hover handler to a
@@ -224,7 +235,7 @@ final class c2c_TextHover extends c2c_TextHover_Plugin_050 {
 			 *                         value is 'early', else 1000.
 			 * @param string $filter   The filter name.
 			 */
-			$priority = (int) apply_filters( 'c2c_text_hover_filter_priority', 3, $filter );
+			$priority = (int) apply_filters( 'c2c_text_hover_filter_priority', $default_priority, $filter );
 
 			add_filter( $filter, array( $this, 'text_hover' ), $priority );
 		}

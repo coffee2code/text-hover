@@ -631,6 +631,24 @@ class Text_Hover_Test extends WP_UnitTestCase {
 		}
 	}
 
+	public function test_default_priority_for_filter_c2c_text_hover_filter_priority_is_based_on_when_setting() {
+		$this->unhook_default_filters();
+
+		add_filter( 'c2c_text_hover_filter_priority', array( $this, 'capture_filter_value' ) );
+
+		c2c_TextHover::get_instance()->register_filters(); // Plugins would typically register their filter before this originally fires
+
+		$this->assertEquals( 3, $this->captured_filter_value[ 'c2c_text_hover_filter_priority' ] );
+
+		$this->unhook_default_filters();
+		$this->set_option( array( 'when' => 'late' ) );
+		c2c_TextHover::get_instance()->register_filters(); // Plugins would typically register their filter before this originally fires
+
+		$this->assertEquals( 1000, $this->captured_filter_value[ 'c2c_text_hover_filter_priority' ] );
+
+		$this->unhook_default_filters( 1000 );
+	}
+
 	/*
 	 * Setting handling
 	 */
