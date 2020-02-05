@@ -27,6 +27,7 @@ class Text_Hover_Test extends WP_UnitTestCase {
 		'100%'           => '99+%',
 		':colon:'        => 'bookended with colons',
 		'_unknown'       => 'underscore unknown',
+		'highlight'      => 'This <em>should</em> get rendered in most cases.',
 	);
 
 	public static function setUpBeforeClass() {

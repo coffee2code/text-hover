@@ -3,6 +3,7 @@
 ## _(in-progress)_
 * Fix: Allow text to hover string to begin and/or end in punctuation.
 * Change: Remove plugin setting page help text indicating order matters (it hasn't since v3.8)
+* New: Unit tests: Add test case for hover text that includes HTML
 
 ## 3.9.1 _(2020-01-12)_
 
