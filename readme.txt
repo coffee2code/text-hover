@@ -276,7 +276,7 @@ Details:
 * Change: Split paragraph in README.md's "Support" section into two
 
 = 3.8 (2018-08-01) =
-* New: Ensure longer, more precise link strings match before shorter strings that might also match, regardless of order defined
+* New: Ensure longer, more precise strings match before shorter strings that might also match, regardless of order defined
 * New: Add support for finding text to hover that may span more than one line or whose internal spaces vary in number and type
 * Fix: Prevent hover text from being embedded within other hover text
 * Change: Switch for using deprecated 'acronym' tag to using 'abbr'

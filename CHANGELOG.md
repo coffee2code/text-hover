@@ -2,6 +2,7 @@
 
 ## _(in-progress)_
 * Fix: Allow text to hover string to begin and/or end in punctuation.
+* Change: Remove plugin setting page help text indicating order matters (it hasn't since v3.8)
 
 ## 3.9.1 _(2020-01-12)_
 
@@ -44,7 +45,7 @@ This minor release adds support for select third-party plugins (Advanced Custom 
 * Change: Split paragraph in README.md's "Support" section into two
 
 ## 3.8 _(2018-08-01)_
-* New: Ensure longer, more precise link strings match before shorter strings that might also match, regardless of order defined
+* New: Ensure longer, more precise strings match before shorter strings that might also match, regardless of order defined
 * New: Add support for finding text to hover that may span more than one line or whose internal spaces vary in number and type
 * Fix: Prevent hover text from being embedded within other hover text
 * Change: Switch for using deprecated 'acronym' tag to using 'abbr'
