@@ -10,7 +10,9 @@
     * Note compatibility through WP 5.3+
     * Drop compatibility with version of WP older than 4.9
 * Change: Remove plugin setting page help text indicating order matters (it hasn't since v3.8)
-* New: Unit tests: Add test case for hover text that includes HTML
+* Unit tests:
+    * New: Add `get_filter_names()` as a helper method for getting the default and third-party filter names
+    * New: Add test case for hover text that includes HTML
 
 ## 3.9.1 _(2020-01-12)_
 

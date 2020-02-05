@@ -171,6 +171,16 @@ class Text_Hover_Test extends WP_UnitTestCase {
 		return $filters;
 	}
 
+	protected function get_filter_names() {
+		return array_map(
+			function ( $x ) { return reset( $x ); },
+			array_merge(
+				$this->get_third_party_filters(),
+				$this->get_default_filters()
+			)
+		);
+	}
+
 	public function capture_filter_value( $value ) {
 		return $this->captured_filter_value[ current_filter() ] = $value;
 	}
