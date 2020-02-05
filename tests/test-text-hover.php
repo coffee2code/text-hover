@@ -441,6 +441,25 @@ class Text_Hover_Test extends WP_UnitTestCase {
 		);
 	}
 
+	public function test_does_not_replace_within_markup_attributes() {
+		$expected = '<a href="http://test.com" title="A coffee2code site">gibberish</a>';
+
+		$this->assertEquals( $expected, $this->text_hover( $expected ) );
+	}
+
+	public function test_does_not_replace_within_markup_attributes_but_does_between_tags() {
+		$text = '<span title="A coffee2code endeavor">the coffee2code project</a>';
+		$expected = $this->expected_text( 'coffee2code' );
+
+		$this->assertEquals( '<span title="A coffee2code endeavor">the ' . $expected . ' project</a>', $this->text_hover( $text ) );
+	}
+
+	public function test_does_not_replace_within_abbr_content() {
+		$expected = '<abbr title="A coffee2code endeavor">the coffee2code project</abbr>';
+
+		$this->assertEquals( $expected, $this->text_hover( $expected ) );
+	}
+
 	public function test_hovers_with_case_sensitivity_by_default() {
 		$expected = $this->expected_text( 'coffee2code' );
 

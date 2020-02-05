@@ -18,6 +18,7 @@
     * New: Add test case for hover text that includes HTML
     * New: Add tests for setting defaults
     * New: Add explicit tests to ensure falsey hover text values don't alter original text
+    * New: Add explicit tests to ensure text replacements don't occur within `abbr` tag contents or in any tag attributes
     * Change: Add `$priority` argument to `test_hover_applies_to_default_filters()`
 
 ## 3.9.1 _(2020-01-12)_
