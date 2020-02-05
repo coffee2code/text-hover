@@ -230,6 +230,60 @@ class Text_Hover_Test extends WP_UnitTestCase {
 		$this->assertEquals( 10, has_action( 'plugins_loaded', array( 'c2c_TextHover', 'get_instance' ) ) );
 	}
 
+	/*
+	 * Setting defaults.
+	 */
+
+	public function test_default_value_of_text_to_replace() {
+		c2c_TextHover::get_instance()->reset_options();
+		$options = c2c_TextHover::get_instance()->get_options();
+
+		$expected = array(
+			'WP' => "WordPress",
+		);
+
+		$this->assertEquals( $expected, $options['text_to_hover'] );
+	}
+
+	public function test_default_value_of_text_hover_comments() {
+		c2c_TextHover::get_instance()->reset_options();
+		$options = c2c_TextHover::get_instance()->get_options();
+
+		$this->assertFalse( $options['text_hover_comments'] );
+	}
+
+	public function test_default_value_of_replace_once() {
+		c2c_TextHover::get_instance()->reset_options();
+		$options = c2c_TextHover::get_instance()->get_options();
+
+		$this->assertFalse( $options['replace_once'] );
+	}
+
+	public function test_default_value_of_case_sensitive() {
+		c2c_TextHover::get_instance()->reset_options();
+		$options = c2c_TextHover::get_instance()->get_options();
+
+		$this->assertTrue( $options['case_sensitive'] );
+	}
+
+	public function test_default_value_of_use_pretty_tooltips() {
+		c2c_TextHover::get_instance()->reset_options();
+		$options = c2c_TextHover::get_instance()->get_options();
+
+		$this->assertTrue( $options['use_pretty_tooltips'] );
+	}
+
+	public function test_default_value_of_when() {
+		c2c_TextHover::get_instance()->reset_options();
+		$options = c2c_TextHover::get_instance()->get_options();
+
+		$this->assertEquals( 'early', $options['when'] );
+	}
+
+	/*
+	 * Text hovers
+	 */
+
 	public function test_no_text_change_when_no_hovers_defined() {
 		$text = 'This is a 2019 test.';
 
