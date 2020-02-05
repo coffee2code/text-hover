@@ -181,6 +181,15 @@ class Text_Hover_Test extends WP_UnitTestCase {
 		);
 	}
 
+	public function unhook_default_filters( $priority = 3 ) {
+		$filters = $this->get_filter_names();
+
+		// Unhook filters.
+		foreach ( $filters as $filter ) {
+			remove_filter( $filter, array( c2c_TextHover::get_instance(), 'text_hover' ), $priority );
+		}
+	}
+
 	public function capture_filter_value( $value ) {
 		return $this->captured_filter_value[ current_filter() ] = $value;
 	}

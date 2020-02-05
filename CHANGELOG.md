@@ -12,6 +12,7 @@
 * Change: Remove plugin setting page help text indicating order matters (it hasn't since v3.8)
 * Unit tests:
     * New: Add `get_filter_names()` as a helper method for getting the default and third-party filter names
+    * New: Add `unhook_default_filters()` as a helper method to unhook plugin's default filters hooked to `text_hover()`
     * New: Add test case for hover text that includes HTML
 
 ## 3.9.1 _(2020-01-12)_
