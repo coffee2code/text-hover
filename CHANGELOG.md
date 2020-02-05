@@ -2,6 +2,13 @@
 
 ## _(in-progress)_
 * Fix: Allow text to hover string to begin and/or end in punctuation.
+* Change: Update plugin framework to 050
+    * 050:
+    * Allow a hash entry to literally have '0' as a value without being entirely omitted when saved
+    * Output donation markup using `printf()` rather than using string concatenation
+    * Update copyright date (2020)
+    * Note compatibility through WP 5.3+
+    * Drop compatibility with version of WP older than 4.9
 * Change: Remove plugin setting page help text indicating order matters (it hasn't since v3.8)
 * New: Unit tests: Add test case for hover text that includes HTML
 

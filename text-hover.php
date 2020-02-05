@@ -57,7 +57,7 @@ if ( ! class_exists( 'c2c_TextHover' ) ) :
 
 require_once( dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'c2c-plugin.php' );
 
-final class c2c_TextHover extends c2c_TextHover_Plugin_049 {
+final class c2c_TextHover extends c2c_TextHover_Plugin_050 {
 
 	/**
 	 * Name of plugin's setting.

@@ -188,11 +188,11 @@ class Text_Hover_Test extends WP_UnitTestCase {
 	}
 
 	public function test_plugin_framework_class_name() {
-		$this->assertTrue( class_exists( 'c2c_TextHover_Plugin_049' ) );
+		$this->assertTrue( class_exists( 'c2c_TextHover_Plugin_050' ) );
 	}
 
 	public function test_plugin_framework_version() {
-		$this->assertEquals( '049', c2c_TextHover::get_instance()->c2c_plugin_version() );
+		$this->assertEquals( '050', c2c_TextHover::get_instance()->c2c_plugin_version() );
 	}
 
 	public function test_version() {
