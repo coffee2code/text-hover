@@ -47,6 +47,12 @@ class Text_Hover_Test extends WP_UnitTestCase {
 		// Reset options
 		c2c_TextHover::get_instance()->reset_options();
 
+		// Dequeue scripts and styles.
+		wp_dequeue_script( 'qtip2' );
+		wp_dequeue_script( 'text-hover' );
+		wp_dequeue_style( 'qtip2' );
+		wp_dequeue_style( 'text-hover' );
+
 		$this->captured_filter_value = array();
 	}
 
@@ -723,6 +729,54 @@ class Text_Hover_Test extends WP_UnitTestCase {
 		$this->assertEquals( 1000, $this->captured_filter_value[ 'c2c_text_hover_filter_priority' ] );
 
 		$this->unhook_default_filters( 1000 );
+	}
+
+	/*
+	 * enqueue_scripts()
+	 */
+
+	public function test_enqueue_scripts_default() {
+		c2c_TextHover::get_instance()->enqueue_scripts();
+
+		$this->assertFalse( wp_script_is( 'qtip2', 'enqueued' ) );
+		$this->assertFalse( wp_script_is( 'text-hover', 'enqueued' ) );
+		$this->assertFalse( wp_style_is( 'qtip2', 'enqueued' ) );
+		$this->assertFalse( wp_style_is( 'text-hover', 'enqueued' ) );
+	}
+
+	public function test_enqueue_scripts_when_pretty_tooltips_enabled_by_setting() {
+		$this->set_option( array( 'use_pretty_tooltips' => true ) );
+		c2c_TextHover::get_instance()->enqueue_scripts();
+
+		$this->assertTrue( wp_script_is( 'qtip2', 'enqueued' ) );
+		$this->assertTrue( wp_script_is( 'text-hover', 'enqueued' ) );
+		$this->assertTrue( wp_style_is( 'qtip2', 'enqueued' ) );
+		$this->assertTrue( wp_style_is( 'text-hover', 'enqueued' ) );
+	}
+
+	public function test_enqueue_scripts_when_disabled() {
+		$this->set_option( array( 'use_pretty_tooltips' => false ) );
+		c2c_TextHover::get_instance()->enqueue_scripts();
+
+		$this->assertFalse( wp_script_is( 'qtip2', 'enqueued' ) );
+		$this->assertFalse( wp_script_is( 'text-hover', 'enqueued' ) );
+		$this->assertFalse( wp_style_is( 'qtip2', 'enqueued' ) );
+		$this->assertFalse( wp_style_is( 'text-hover', 'enqueued' ) );
+	}
+
+	/*
+	 * filter: c2c_text_hover_use_pretty_tooltips
+	 */
+
+	public function test_enqueue_scripts_when_pretty_tooltips_enabled_by_filter() {
+		$this->set_option( array( 'use_pretty_tooltips' => false ) );
+		add_filter( 'c2c_text_hover_use_pretty_tooltips', '__return_true' );
+		c2c_TextHover::get_instance()->enqueue_scripts();
+
+		$this->assertTrue( wp_script_is( 'qtip2', 'enqueued' ) );
+		$this->assertTrue( wp_script_is( 'text-hover', 'enqueued' ) );
+		$this->assertTrue( wp_style_is( 'qtip2', 'enqueued' ) );
+		$this->assertTrue( wp_style_is( 'text-hover', 'enqueued' ) );
 	}
 
 	/*
