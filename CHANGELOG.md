@@ -10,9 +10,10 @@
     * Allow a hash entry to literally have '0' as a value without being entirely omitted when saved
     * Output donation markup using `printf()` rather than using string concatenation
     * Update copyright date (2020)
-    * Note compatibility through WP 5.3+
+    * Note compatibility through WP 5.4+
     * Drop compatibility with version of WP older than 4.9
 * Change: Remove plugin setting page help text indicating order matters (it hasn't since v3.8)
+* Change: Note compatibility through WP 5.4+
 * Unit tests:
     * New: Add `get_filter_names()` as a helper method for getting the default and third-party filter names
     * New: Add `unhook_default_filters()` as a helper method to unhook plugin's default filters hooked to `text_hover()`

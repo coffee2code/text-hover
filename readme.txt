@@ -5,7 +5,7 @@ Tags: text, post content, abbreviations, terms, acronyms, hover, help, tooltips,
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 4.7
-Tested up to: 5.3
+Tested up to: 5.4
 Stable tag: 3.9.1
 
 Add hover text to regular text in posts. Handy for providing explanations of names, terms, phrases, abbreviations, and acronyms mentioned in posts/pages.
