@@ -24,6 +24,7 @@
     * New: Add tests for setting defaults
     * New: Add explicit tests to ensure falsey hover text values don't alter original text
     * New: Add explicit tests to ensure text replacements don't occur within `abbr` tag contents or in any tag attributes
+    * Change: Remove unnecessary unregistering of hooks in `tearDown()`
     * Change: Add `$priority` argument to `test_hover_applies_to_default_filters()`
     * Change: Rename unit test function so that it is treated as a unit test
     * Change: Use HTTPS for link to WP SVN repository in bin script for configuring unit tests (and delete commented-out code)

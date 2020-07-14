@@ -49,13 +49,6 @@ class Text_Hover_Test extends WP_UnitTestCase {
 		c2c_TextHover::get_instance()->reset_options();
 
 		$this->captured_filter_value = array();
-
-		remove_filter( 'c2c_text_hover',                array( $this, 'add_text_to_hover' ) );
-		remove_filter( 'c2c_text_hover_once',           '__return_true' );
-		remove_filter( 'c2c_text_hover_case_sensitive', '__return_false' );
-		remove_filter( 'c2c_text_hover_comments',       '__return_true' );
-		remove_filter( 'c2c_text_hover_filters',        array( $this, 'add_custom_filter' ) );
-		remove_filter( 'c2c_text_hover_third_party_filters', array( $this, 'add_custom_filter' ) );
 	}
 
 
