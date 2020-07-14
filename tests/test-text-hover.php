@@ -232,6 +232,10 @@ class Text_Hover_Test extends WP_UnitTestCase {
 		$this->assertEquals( 10, has_action( 'plugins_loaded', array( 'c2c_TextHover', 'get_instance' ) ) );
 	}
 
+	public function test_setting_name() {
+		$this->assertEquals( 'c2c_text_hover', c2c_TextHover::SETTING_NAME );
+	}
+
 	/*
 	 * Setting defaults.
 	 */
