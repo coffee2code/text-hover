@@ -4,6 +4,7 @@
 * New: Add new setting to allow control over when text hovers are handled early or late in text processing process
 * New: Add filter `c2c_text_hover_filter_priority` for filtering hook priority for text hover handler
 * New: Allow text to hover string to begin and/or end in punctuation.
+* New: Add TODO.md and move existing TODO list from top of main plugin file into it
 * Change: Update plugin framework to 050
     * 050:
     * Allow a hash entry to literally have '0' as a value without being entirely omitted when saved
