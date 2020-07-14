@@ -25,6 +25,7 @@
     * New: Add tests for setting defaults
     * New: Add explicit tests to ensure falsey hover text values don't alter original text
     * New: Add explicit tests to ensure text replacements don't occur within `abbr` tag contents or in any tag attributes
+    * Change: Store plugin instance in test object to simplify referencing it
     * Change: Remove unnecessary unregistering of hooks in `tearDown()`
     * Change: Add `$priority` argument to `test_hover_applies_to_default_filters()`
     * Change: Remove duplicative `reset_options()` call

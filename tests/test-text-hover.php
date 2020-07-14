@@ -4,6 +4,8 @@ defined( 'ABSPATH' ) or die();
 
 class Text_Hover_Test extends WP_UnitTestCase {
 
+	protected $obj;
+
 	protected $captured_filter_value = array();
 
 	protected static $text_to_hover = array(
@@ -38,6 +40,9 @@ class Text_Hover_Test extends WP_UnitTestCase {
 
 	public function setUp() {
 		parent::setUp();
+
+		$this->obj = c2c_TextHover::get_instance();
+
 		$this->set_option();
 	}
 
@@ -45,7 +50,7 @@ class Text_Hover_Test extends WP_UnitTestCase {
 		parent::tearDown();
 
 		// Reset options
-		c2c_TextHover::get_instance()->reset_options();
+		$this->obj->reset_options();
 
 		// Dequeue scripts and styles.
 		wp_dequeue_script( 'qtip2' );
@@ -136,11 +141,11 @@ class Text_Hover_Test extends WP_UnitTestCase {
 			'case_sensitive' => true,
 		);
 		$settings = wp_parse_args( $settings, $defaults );
-		c2c_TextHover::get_instance()->update_option( $settings, true );
+		$this->obj->update_option( $settings, true );
 	}
 
 	protected function text_hover( $text ) {
-		return c2c_TextHover::get_instance()->text_hover( $text );
+		return $this->obj->text_hover( $text );
 	}
 
 	/**
@@ -186,7 +191,7 @@ class Text_Hover_Test extends WP_UnitTestCase {
 
 		// Unhook filters.
 		foreach ( $filters as $filter ) {
-			remove_filter( $filter, array( c2c_TextHover::get_instance(), 'text_hover' ), $priority );
+			remove_filter( $filter, array( $this->obj, 'text_hover' ), $priority );
 		}
 	}
 
@@ -215,15 +220,15 @@ class Text_Hover_Test extends WP_UnitTestCase {
 	}
 
 	public function test_plugin_framework_version() {
-		$this->assertEquals( '050', c2c_TextHover::get_instance()->c2c_plugin_version() );
+		$this->assertEquals( '050', $this->obj->c2c_plugin_version() );
 	}
 
 	public function test_version() {
-		$this->assertEquals( '3.9.1', c2c_TextHover::get_instance()->version() );
+		$this->assertEquals( '3.9.1', $this->obj->version() );
 	}
 
 	public function test_instance_object_is_returned() {
-		$this->assertTrue( is_a( c2c_TextHover::get_instance(), 'c2c_TextHover' ) );
+		$this->assertTrue( is_a( $this->obj, 'c2c_TextHover' ) );
 	}
 
 	public function test_hooks_plugins_loaded() {
@@ -239,8 +244,8 @@ class Text_Hover_Test extends WP_UnitTestCase {
 	 */
 
 	public function test_default_value_of_text_to_replace() {
-		c2c_TextHover::get_instance()->reset_options();
-		$options = c2c_TextHover::get_instance()->get_options();
+		$this->obj->reset_options();
+		$options = $this->obj->get_options();
 
 		$expected = array(
 			'WP' => "WordPress",
@@ -250,36 +255,36 @@ class Text_Hover_Test extends WP_UnitTestCase {
 	}
 
 	public function test_default_value_of_text_hover_comments() {
-		c2c_TextHover::get_instance()->reset_options();
-		$options = c2c_TextHover::get_instance()->get_options();
+		$this->obj->reset_options();
+		$options = $this->obj->get_options();
 
 		$this->assertFalse( $options['text_hover_comments'] );
 	}
 
 	public function test_default_value_of_replace_once() {
-		c2c_TextHover::get_instance()->reset_options();
-		$options = c2c_TextHover::get_instance()->get_options();
+		$this->obj->reset_options();
+		$options = $this->obj->get_options();
 
 		$this->assertFalse( $options['replace_once'] );
 	}
 
 	public function test_default_value_of_case_sensitive() {
-		c2c_TextHover::get_instance()->reset_options();
-		$options = c2c_TextHover::get_instance()->get_options();
+		$this->obj->reset_options();
+		$options = $this->obj->get_options();
 
 		$this->assertTrue( $options['case_sensitive'] );
 	}
 
 	public function test_default_value_of_use_pretty_tooltips() {
-		c2c_TextHover::get_instance()->reset_options();
-		$options = c2c_TextHover::get_instance()->get_options();
+		$this->obj->reset_options();
+		$options = $this->obj->get_options();
 
 		$this->assertTrue( $options['use_pretty_tooltips'] );
 	}
 
 	public function test_default_value_of_when() {
-		c2c_TextHover::get_instance()->reset_options();
-		$options = c2c_TextHover::get_instance()->get_options();
+		$this->obj->reset_options();
+		$options = $this->obj->get_options();
 
 		$this->assertEquals( 'early', $options['when'] );
 	}
@@ -629,7 +634,7 @@ class Text_Hover_Test extends WP_UnitTestCase {
 	public function test_hover_applies_to_default_filters( $filter, $priority = 3 ) {
 		$expected = $this->expected_text( 'coffee2code' );
 
-		$this->assertEquals( $priority, has_filter( $filter, array( c2c_TextHover::get_instance(), 'text_hover' ) ) );
+		$this->assertEquals( $priority, has_filter( $filter, array( $this->obj, 'text_hover' ) ) );
 		$this->assertGreaterThan( 0, strpos( apply_filters( $filter, 'a coffee2code' ), $expected ) );
 	}
 
@@ -641,7 +646,7 @@ class Text_Hover_Test extends WP_UnitTestCase {
 
 		add_filter( 'c2c_text_hover_comments', '__return_true' );
 
-		$this->assertEquals( 11, has_filter( $filter, array( c2c_TextHover::get_instance(), 'text_hover_comment_text' ) ) );
+		$this->assertEquals( 11, has_filter( $filter, array( $this->obj, 'text_hover_comment_text' ) ) );
 		$this->assertGreaterThan( 0, strpos( apply_filters( $filter, 'a coffee2code' ), $expected ) );
 	}
 
@@ -651,7 +656,7 @@ class Text_Hover_Test extends WP_UnitTestCase {
 	public function test_hover_applies_to_third_party_filters( $filter ) {
 		$expected = $this->expected_text( 'coffee2code' );
 
-		$this->assertEquals( 3, has_filter( $filter, array( c2c_TextHover::get_instance(), 'text_hover' ) ) );
+		$this->assertEquals( 3, has_filter( $filter, array( $this->obj, 'text_hover' ) ) );
 		$this->assertGreaterThan( 0, strpos( apply_filters( $filter, 'a coffee2code' ), $expected ) );
 	}
 
@@ -666,7 +671,7 @@ class Text_Hover_Test extends WP_UnitTestCase {
 
 		add_filter( 'c2c_text_hover_filters', array( $this, 'capture_filter_value' ) );
 
-		c2c_TextHover::get_instance()->register_filters(); // Plugins would typically register their filter before this originally fires
+		$this->obj->register_filters(); // Plugins would typically register their filter before this originally fires
 
 		$this->assertSame( $filters, $this->captured_filter_value[ 'c2c_text_hover_filters' ] );
 
@@ -678,7 +683,7 @@ class Text_Hover_Test extends WP_UnitTestCase {
 
 		add_filter( 'c2c_text_hover_filters', array( $this, 'add_custom_filter' ) );
 
-		c2c_TextHover::get_instance()->register_filters(); // Plugins would typically register their filter before this originally fires
+		$this->obj->register_filters(); // Plugins would typically register their filter before this originally fires
 
 		$this->assertEquals( $this->expected_text( 'coffee2code' ), apply_filters( 'custom_filter', 'coffee2code' ) );
 	}
@@ -688,7 +693,7 @@ class Text_Hover_Test extends WP_UnitTestCase {
 
 		add_filter( 'c2c_text_hover_third_party_filters', array( $this, 'add_custom_filter' ) );
 
-		c2c_TextHover::get_instance()->register_filters(); // Plugins would typically register their filter before this originally fires
+		$this->obj->register_filters(); // Plugins would typically register their filter before this originally fires
 
 		$this->assertEquals( $this->expected_text( 'coffee2code' ), apply_filters( 'custom_filter', 'coffee2code' ) );
 	}
@@ -704,7 +709,7 @@ class Text_Hover_Test extends WP_UnitTestCase {
 
 		add_filter( 'c2c_text_hover_filter_priority', array( $this, 'c2c_text_hover_filter_priority' ) );
 
-		c2c_TextHover::get_instance()->register_filters(); // Plugins would typically register their filter before this originally fires
+		$this->obj->register_filters(); // Plugins would typically register their filter before this originally fires
 
 		$priority = 11;
 
@@ -718,13 +723,13 @@ class Text_Hover_Test extends WP_UnitTestCase {
 
 		add_filter( 'c2c_text_hover_filter_priority', array( $this, 'capture_filter_value' ) );
 
-		c2c_TextHover::get_instance()->register_filters(); // Plugins would typically register their filter before this originally fires
+		$this->obj->register_filters(); // Plugins would typically register their filter before this originally fires
 
 		$this->assertEquals( 3, $this->captured_filter_value[ 'c2c_text_hover_filter_priority' ] );
 
 		$this->unhook_default_filters();
 		$this->set_option( array( 'when' => 'late' ) );
-		c2c_TextHover::get_instance()->register_filters(); // Plugins would typically register their filter before this originally fires
+		$this->obj->register_filters(); // Plugins would typically register their filter before this originally fires
 
 		$this->assertEquals( 1000, $this->captured_filter_value[ 'c2c_text_hover_filter_priority' ] );
 
@@ -736,7 +741,7 @@ class Text_Hover_Test extends WP_UnitTestCase {
 	 */
 
 	public function test_enqueue_scripts_default() {
-		c2c_TextHover::get_instance()->enqueue_scripts();
+		$this->obj->enqueue_scripts();
 
 		$this->assertFalse( wp_script_is( 'qtip2', 'enqueued' ) );
 		$this->assertFalse( wp_script_is( 'text-hover', 'enqueued' ) );
@@ -746,7 +751,7 @@ class Text_Hover_Test extends WP_UnitTestCase {
 
 	public function test_enqueue_scripts_when_pretty_tooltips_enabled_by_setting() {
 		$this->set_option( array( 'use_pretty_tooltips' => true ) );
-		c2c_TextHover::get_instance()->enqueue_scripts();
+		$this->obj->enqueue_scripts();
 
 		$this->assertTrue( wp_script_is( 'qtip2', 'enqueued' ) );
 		$this->assertTrue( wp_script_is( 'text-hover', 'enqueued' ) );
@@ -756,7 +761,7 @@ class Text_Hover_Test extends WP_UnitTestCase {
 
 	public function test_enqueue_scripts_when_disabled() {
 		$this->set_option( array( 'use_pretty_tooltips' => false ) );
-		c2c_TextHover::get_instance()->enqueue_scripts();
+		$this->obj->enqueue_scripts();
 
 		$this->assertFalse( wp_script_is( 'qtip2', 'enqueued' ) );
 		$this->assertFalse( wp_script_is( 'text-hover', 'enqueued' ) );
@@ -771,7 +776,7 @@ class Text_Hover_Test extends WP_UnitTestCase {
 	public function test_enqueue_scripts_when_pretty_tooltips_enabled_by_filter() {
 		$this->set_option( array( 'use_pretty_tooltips' => false ) );
 		add_filter( 'c2c_text_hover_use_pretty_tooltips', '__return_true' );
-		c2c_TextHover::get_instance()->enqueue_scripts();
+		$this->obj->enqueue_scripts();
 
 		$this->assertTrue( wp_script_is( 'qtip2', 'enqueued' ) );
 		$this->assertTrue( wp_script_is( 'text-hover', 'enqueued' ) );
@@ -790,7 +795,7 @@ class Text_Hover_Test extends WP_UnitTestCase {
 	public function test_does_not_immediately_store_default_settings_in_db() {
 		$option_name = c2c_TextHover::SETTING_NAME;
 		// Get the options just to see if they may get saved.
-		$options     = c2c_TextHover::get_instance()->get_options();
+		$options     = $this->obj->get_options();
 
 		$this->assertFalse( get_option( $option_name ) );
 	}
@@ -798,7 +803,7 @@ class Text_Hover_Test extends WP_UnitTestCase {
 
 	public function test_uninstall_deletes_option() {
 		$option_name = c2c_TextHover::SETTING_NAME;
-		$options     = c2c_TextHover::get_instance()->get_options();
+		$options     = $this->obj->get_options();
 
 		// Explicitly set an option to ensure options get saved to the database.
 		$this->set_option( array( 'replace_once' => true ) );
