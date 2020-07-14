@@ -38,7 +38,6 @@ class Text_Hover_Test extends WP_UnitTestCase {
 
 	public function setUp() {
 		parent::setUp();
-		c2c_TextHover::get_instance()->reset_options();
 		$this->set_option();
 	}
 
