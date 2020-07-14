@@ -14,6 +14,7 @@
     * Drop compatibility with version of WP older than 4.9
 * Change: Remove plugin setting page help text indicating order matters (it hasn't since v3.8)
 * Change: Note compatibility through WP 5.4+
+* Change: Update links to coffee2code.com to be HTTPS
 * Unit tests:
     * New: Add `get_filter_names()` as a helper method for getting the default and third-party filter names
     * New: Add `unhook_default_filters()` as a helper method to unhook plugin's default filters hooked to `text_hover()`
