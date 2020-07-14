@@ -270,7 +270,7 @@ final class c2c_TextHover extends c2c_TextHover_Plugin_050 {
 	 * @since 3.5
 	 */
 	public function admin_print_scripts() {
-		if ( $this->options_page == get_current_screen()->id ) {
+		if ( $this->options_page === get_current_screen()->id ) {
 			$this->enqueue_scripts();
 		}
 	}
