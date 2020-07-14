@@ -492,7 +492,7 @@ class Text_Hover_Test extends WP_UnitTestCase {
 		$this->assertEquals( "This $expected is true", $this->text_hover( 'This WP COM is true' ) );
 	}
 
-	public function tests_hovers_term_split_across_multiple_lines() {
+	public function test_hovers_term_split_across_multiple_lines() {
 		$expected = array(
 			"Did you see " . $this->expected_text( 'Matt Mullenweg', "Matt\nMullenweg" ) . " at the party?"
 				=> $this->text_hover( "Did you see Matt\nMullenweg at the party?" ),
