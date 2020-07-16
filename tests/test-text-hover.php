@@ -224,7 +224,7 @@ class Text_Hover_Test extends WP_UnitTestCase {
 	}
 
 	public function test_version() {
-		$this->assertEquals( '3.9.1', $this->obj->version() );
+		$this->assertEquals( '4.0', $this->obj->version() );
 	}
 
 	public function test_instance_object_is_returned() {

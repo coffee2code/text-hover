@@ -1,6 +1,13 @@
 # Changelog
 
-## _(in-progress)_
+## 4.0 _(2020-07-16)_
+
+### Highlights:
+
+This minor release adds a new setting that can allow the plugin to run later to avoid potential conflicts with other plugins, now allows hover strings to begin or end with punctuation, updates its plugin framework, adds a TODO.md file, updates a few URLs to be HTTPS, expands unit testing, and updates compatibility to be WP 4.9-5.4+.
+
+### Details:
+
 * New: Add new setting to allow control over when text hovers are handled early or late in text processing process
 * New: Add filter `c2c_text_hover_filter_priority` for filtering hook priority for text hover handler
 * New: Allow text to hover string to begin and/or end in punctuation.
@@ -11,10 +18,10 @@
     * Output donation markup using `printf()` rather than using string concatenation
     * Update copyright date (2020)
     * Note compatibility through WP 5.4+
-    * Drop compatibility with version of WP older than 4.9
+    * Drop compatibility with versions of WP older than 4.9
 * Change: Remove plugin setting page help text indicating order matters (it hasn't since v3.8)
 * Change: Note compatibility through WP 5.4+
-* Change: Drop compatibility with version of WP older than 4.9
+* Change: Drop compatibility with versions of WP older than 4.9
 * Change: Update links to coffee2code.com to be HTTPS
 * Unit tests:
     * New: Add `get_filter_names()` as a helper method for getting the default and third-party filter names
