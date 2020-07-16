@@ -31,6 +31,7 @@
     * Change: Remove duplicative `reset_options()` call
     * Change: Rename unit test function so that it is treated as a unit test
     * Change: Use HTTPS for link to WP SVN repository in bin script for configuring unit tests (and delete commented-out code)
+* Change: Update screenshot
 
 ## 3.9.1 _(2020-01-12)_
 
