@@ -236,6 +236,85 @@ final class c2c_TextHover extends c2c_TextHover_Plugin_050 {
 	}
 
 	/**
+	 * Returns translated strings used by c2c_Plugin parent class.
+	 *
+	 * @since 4.1
+	 *
+	 * @param string $string Optional. The string whose translation should be
+	 *                       returned, or an empty string to return all strings.
+	 *                       Default ''.
+	 * @return string|string[] The translated string, or if a string was provided
+	 *                         but a translation was not found then the original
+	 *                         string, or an array of all strings if $string is ''.
+	 */
+	public function get_c2c_string( $string = '' ) {
+		$strings = array(
+			'%s cannot be cloned.'
+				/* translators: %s: Name of plugin class. */
+				=> __( '%s cannot be cloned.', 'text-hover' ),
+			'%s cannot be unserialized.'
+				/* translators: %s: Name of plugin class. */
+				=> __( '%s cannot be unserialized.', 'text-hover' ),
+			'A value is required for: "%s"'
+				/* translators: %s: Label for setting. */
+				=> __( 'A value is required for: "%s"', 'text-hover' ),
+			'Click for more help on this plugin'
+				=> __( 'Click for more help on this plugin', 'text-hover' ),
+			' (especially check out the "Other Notes" tab, if present)'
+				=> __( ' (especially check out the "Other Notes" tab, if present)', 'text-hover' ),
+			'Coffee fuels my coding.'
+				=> __( 'Coffee fuels my coding.', 'text-hover' ),
+			'Did you find this plugin useful?'
+				=> __( 'Did you find this plugin useful?', 'text-hover' ),
+			'Donate'
+				=> __( 'Donate', 'text-hover' ),
+			'Expected integer value for: %s'
+				=> __( 'Expected integer value for: %s', 'text-hover' ),
+			'Invalid file specified for C2C_Plugin: %s'
+				/* translators: %s: Path to the plugin file. */
+				=> __( 'Invalid file specified for C2C_Plugin: %s', 'text-hover' ),
+			'More information about %1$s %2$s'
+				/* translators: 1: plugin name 2: plugin version */
+				=> __( 'More information about %1$s %2$s', 'text-hover' ),
+			'More Help'
+				=> __( 'More Help', 'text-hover' ),
+			'More Plugin Help'
+				=> __( 'More Plugin Help', 'text-hover' ),
+			'Please consider a donation'
+				=> __( 'Please consider a donation', 'text-hover' ),
+			'Reset Settings'
+				=> __( 'Reset Settings', 'text-hover' ),
+			'Save Changes'
+				=> __( 'Save Changes', 'text-hover' ),
+			'See the "Help" link to the top-right of the page for more help.'
+				=> __( 'See the "Help" link to the top-right of the page for more help.', 'text-hover' ),
+			'Settings'
+				=> __( 'Settings', 'text-hover' ),
+			'Settings reset.'
+				=> __( 'Settings reset.', 'text-hover' ),
+			'Something went wrong.'
+				=> __( 'Something went wrong.', 'text-hover' ),
+			'The method %1$s should not be called until after the %2$s action.'
+				/* translators: 1: The name of a code function, 2: The name of a WordPress action. */
+				=> __( 'The method %1$s should not be called until after the %2$s action.', 'text-hover' ),
+			'The plugin author homepage.'
+				=> __( 'The plugin author homepage.', 'text-hover' ),
+			"The plugin configuration option '%s' must be supplied."
+				/* translators: %s: The setting configuration key name. */
+				=>__( "The plugin configuration option '%s' must be supplied.", 'text-hover' ),
+			'This plugin brought to you by %s.'
+				/* translators: %s: Link to plugin author's homepage. */
+				=> __( 'This plugin brought to you by %s.', 'text-hover' ),
+		);
+
+		if ( ! $string ) {
+			return array_values( $strings );
+		}
+
+		return ! empty( $strings[ $string ] ) ? $strings[ $string ] : $string;
+	}
+
+	/**
 	 * Outputs the text above the setting form.
 	 *
 	 * @param string $localized_heading_text Optional. Localized page heading text.
