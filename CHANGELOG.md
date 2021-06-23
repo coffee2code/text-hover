@@ -43,6 +43,14 @@
 * Change: Move translation of all parent class strings into main plugin file
 * Change: Note compatibility through WP 5.7+
 * Change: Update copyright date (2021)
+* Unit tests:
+    * Change: Restructure unit test directories and files into `tests/` top-level directory
+        * Change: Move `bin/` into `tests/`
+        * Change: Move `tests/bootstrap.php` into `tests/phpunit/`
+        * Change: In bootstrap, store path to plugin file constant so its value can be used within that file and in test file
+        * Change: Move `tests/*.php` into `tests/phpunit/tests/`
+        * Change: Remove 'test-' prefix from unit test files
+        * Change: Rename `phpunit.xml` to `phpunit.xml.dist` per best practices
 
 ## 4.0 _(2020-07-16)_
 
