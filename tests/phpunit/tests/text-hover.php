@@ -105,6 +105,8 @@ class Text_Hover_Test extends WP_UnitTestCase {
 			array( ',' ),
 			array( '!' ),
 			array( '?' ),
+			array( ';' ),
+			array( ':' ),
 		);
 	}
 
@@ -114,6 +116,8 @@ class Text_Hover_Test extends WP_UnitTestCase {
 			array( array( '(', ')' ) ),
 			array( array( ')', '(' ) ),
 			array( array( '{', '}' ) ),
+			array( array( ']', '[' ) ),
+			array( array( '[', ']' ) ),
 			array( array( '<strong>', '</strong>' ) ),
 		);
 	}

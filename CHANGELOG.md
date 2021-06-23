@@ -51,6 +51,7 @@
         * Change: Move `tests/*.php` into `tests/phpunit/tests/`
         * Change: Remove 'test-' prefix from unit test files
         * Change: Rename `phpunit.xml` to `phpunit.xml.dist` per best practices
+    * New: Add additional punctuation-related test cases
 
 ## 4.0 _(2020-07-16)_
 
