@@ -74,6 +74,7 @@ class Text_Hover_Test extends WP_UnitTestCase {
 		foreach ( self::get_core_filters() as $filter ) {
 			$filters[] = [ $filter ];
 		}
+
 		return $filters;
 	}
 
@@ -85,14 +86,12 @@ class Text_Hover_Test extends WP_UnitTestCase {
 	}
 
 	public static function get_third_party_filters() {
-		return array(
-			array( 'acf/format_value/type=text' ),
-			array( 'acf/format_value/type=textarea' ),
-			array( 'acf/format_value/type=url' ),
-			array( 'acf_the_content' ),
-			array( 'elementor/frontend/the_content' ),
-			array( 'elementor/widget/render_content' ),
-		);
+		$filters = [];
+		foreach ( self::get_3rd_party_filters() as $filter ) {
+			$filters[] = [ $filter ];
+		}
+
+		return $filters;
 	}
 
 	public static function get_text_to_hover() {
@@ -129,8 +128,20 @@ class Text_Hover_Test extends WP_UnitTestCase {
 	//
 	//
 
+
 	protected static function get_core_filters() {
 		return array( 'the_content', 'the_excerpt', 'widget_text' );
+	}
+
+	protected static function get_3rd_party_filters() {
+		return array(
+			'acf/format_value/type=text',
+			'acf/format_value/type=textarea',
+			'acf/format_value/type=url',
+			'acf_the_content',
+			'elementor/frontend/the_content',
+			'elementor/widget/render_content',
+		);
 	}
 
 	protected function text_hovers( $term = '' ) {
@@ -833,28 +844,13 @@ class Text_Hover_Test extends WP_UnitTestCase {
 	}
 
 	public function test_get_default_filters_third_party() {
-		$filters = array(
-			'acf/format_value/type=text',
-			'acf/format_value/type=textarea',
-			'acf/format_value/type=url',
-			'acf_the_content',
-			'elementor/frontend/the_content',
-			'elementor/widget/render_content',
-		);
+		$filters = self::get_3rd_party_filters();
 
 		$this->assertEquals( $filters, $this->obj->get_default_filters( 'third_party' ) );
 	}
 
 	public function test_get_default_filters_both() {
-		$filters = array(
-			'acf/format_value/type=text',
-			'acf/format_value/type=textarea',
-			'acf/format_value/type=url',
-			'acf_the_content',
-			// Support for Elementor plugin.
-			'elementor/frontend/the_content',
-			'elementor/widget/render_content',
-		);
+		$filters = self::get_3rd_party_filters();
 
 		$this->assertEquals(
 			array_merge( $this->get_core_filters(), $filters ),
