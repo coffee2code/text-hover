@@ -70,11 +70,11 @@ class Text_Hover_Test extends WP_UnitTestCase {
 
 
 	public static function get_default_filters() {
-		return array(
-			array( 'the_content' ),
-			array( 'the_excerpt' ),
-			array( 'widget_text' ),
-		);
+		$filters = [];
+		foreach ( self::get_core_filters() as $filter ) {
+			$filters[] = [ $filter ];
+		}
+		return $filters;
 	}
 
 	public static function get_comment_filters() {
@@ -128,6 +128,10 @@ class Text_Hover_Test extends WP_UnitTestCase {
 	// HELPER FUNCTIONS
 	//
 	//
+
+	protected static function get_core_filters() {
+		return array( 'the_content', 'the_excerpt', 'widget_text' );
+	}
 
 	protected function text_hovers( $term = '' ) {
 		$text_to_hover = self::$text_to_hover;
@@ -813,15 +817,15 @@ class Text_Hover_Test extends WP_UnitTestCase {
 	 */
 
 	public function test_get_default_filters_default() {
-		$this->assertEquals( array( 'the_content', 'the_excerpt', 'widget_text' ), $this->obj->get_default_filters() );
+		$this->assertEquals( self::get_core_filters(), $this->obj->get_default_filters() );
 	}
 
 	public function test_get_default_filters_empty_string() {
-		$this->assertEquals( array( 'the_content', 'the_excerpt', 'widget_text' ), $this->obj->get_default_filters( '' ) );
+		$this->assertEquals( self::get_core_filters(), $this->obj->get_default_filters( '' ) );
 	}
 
 	public function test_get_default_filters_core() {
-		$this->assertEquals( array( 'the_content', 'the_excerpt', 'widget_text' ), $this->obj->get_default_filters( 'core' ) );
+		$this->assertEquals( self::get_core_filters(), $this->obj->get_default_filters( 'core' ) );
 	}
 
 	public function test_get_default_filters_invalid() {
@@ -853,7 +857,7 @@ class Text_Hover_Test extends WP_UnitTestCase {
 		);
 
 		$this->assertEquals(
-			array_merge( array( 'the_content', 'the_excerpt', 'widget_text' ), $filters ),
+			array_merge( $this->get_core_filters(), $filters ),
 			$this->obj->get_default_filters( 'both' )
 		);
 	}
