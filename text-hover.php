@@ -164,10 +164,66 @@ final class c2c_TextHover extends c2c_Plugin_063 {
 				'help'             => sprintf(
 					/* translators: %s: List of default filters. */
 					__( 'List more filters that should get text hover processing. One filter per line. These supplement the default filters: %s (and any others added via filters).', 'text-hover' ),
-					implode( ', ', array( 'the_content', 'the_excerpt', 'widget_text' ) )
+					implode( ', ', $this->get_default_filters() )
 				),
 			),
 		);
+	}
+
+	/**
+	 * Returns the default filters processed by the plugin.
+	 *
+	 * The values do not take into account any user-specified filters from the
+	 * more_filters setting nor any filtering. A value returned here does not
+	 * necessary mean it'll get processed for text hover.
+	 *
+	 * Currently supported third-party plugins:
+	 *
+	 * - Advanced Custom Fields
+	 *    'acf/format_value/type=text',
+	 *    'acf/format_value/type=textarea',
+	 *    'acf/format_value/type=url',
+	 *    'acf_the_content',
+	 * - Elementor
+	 *    'elementor/frontend/the_content',
+	 *    'elementor/widget/render_content',
+	 *
+	 * @since 4.1
+	 *
+	 * @param string $type The type of filters. One of 'core', 'third_party', 'both'.
+	 *                     Default 'core'.
+	 * @return array The filters associated with the specified type. Returns an
+	 *               empty array for an invalid type.
+	 */
+	public function get_default_filters( $type = 'core' ) {
+		$core        = array( 'the_content', 'the_excerpt', 'widget_text' );
+		$third_party = array(
+			// Support for Advanced Custom Fields plugin.
+			'acf/format_value/type=text',
+			'acf/format_value/type=textarea',
+			'acf/format_value/type=url',
+			'acf_the_content',
+			// Support for Elementor plugin.
+			'elementor/frontend/the_content',
+			'elementor/widget/render_content',
+		);
+
+		switch ( $type ) {
+			case 'both':
+				$filters = array_merge( $core, $third_party );
+				break;
+			case 'core':
+			case '':
+				$filters = $core;
+				break;
+			case 'third_party':
+				$filters = $third_party;
+				break;
+			default:
+				$filters = array();
+		}
+
+		return $filters;
 	}
 
 	/**
@@ -182,34 +238,16 @@ final class c2c_TextHover extends c2c_Plugin_063 {
 		 * Use this to amend or remove support for hooks present in third party
 		 * plugins and themes.
 		 *
-		 * Currently supported plugins:
-		 * - Advanced Custom Fields
-		 *    'acf/format_value/type=text',
-		 *    'acf/format_value/type=textarea',
-		 *    'acf/format_value/type=url',
-		 *    'acf_the_content',
-		 * - Elementor
-		 *    'elementor/frontend/the_content',
-		 *    'elementor/widget/render_content',
-		 *
+		 * @see get_default_filters()
 		 * @since 3.9
 		 *
 		 * @param array $filters The third party filters that get processed for
 		 *                       hover text. See filter inline docs for defaults.
 		 */
-		$filters = (array) apply_filters( 'c2c_text_hover_third_party_filters', array(
-			// Support for Advanced Custom Fields plugin.
-			'acf/format_value/type=text',
-			'acf/format_value/type=textarea',
-			'acf/format_value/type=url',
-			'acf_the_content',
-			// Support for Elementor plugin.
-			'elementor/frontend/the_content',
-			'elementor/widget/render_content',
-		) );
+		$filters = (array) apply_filters( 'c2c_text_hover_third_party_filters', $this->get_default_filters( 'third_party' ) );
 
 		// Add in relevant stock WP filters and additional filters.
-		$filters = array_unique( array_merge( $filters, array( 'the_content', 'the_excerpt', 'widget_text' ), $options['more_filters'] ) );
+		$filters = array_unique( array_merge( $filters, $this->get_default_filters(), $options['more_filters'] ) );
 
 		/**
 		 * Filters the hooks that get processed for hover text.
