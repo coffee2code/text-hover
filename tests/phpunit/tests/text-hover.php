@@ -293,6 +293,13 @@ class Text_Hover_Test extends WP_UnitTestCase {
 		$this->assertEquals( 'early', $options['when'] );
 	}
 
+	public function test_default_value_of_more_filters() {
+		$this->obj->reset_options();
+		$options = $this->obj->get_options();
+
+		$this->assertEmpty( $options['more_filters'] );
+	}
+
 	/*
 	 * Text hovers
 	 */
@@ -607,6 +614,19 @@ class Text_Hover_Test extends WP_UnitTestCase {
 		add_filter( 'c2c_text_hover', array( $this, 'add_text_to_hover' ) );
 
 		$this->assertEquals( $expected, $this->text_hover( 'bbPress' ) );
+	}
+
+	public function test_hovers_filter_added_via_more_filters() {
+		$filter = 'custom_filter';
+		$this->assertEquals( 'WP', apply_filters( $filter, 'WP' ) );
+
+		$expected = "<abbr class='c2c-text-hover' title='WordPress'>WP</abbr>";
+
+		$this->set_option( array( 'more_filters' => array( $filter ) ) );
+		$this->obj->register_filters();
+
+		$this->assertEquals( 3, has_filter( $filter, array( $this->obj, 'text_hover' ) ) );
+		$this->assertEquals( $expected, apply_filters( $filter, 'WP' ) );
 	}
 
 	public function test_hover_does_not_apply_to_comments_by_default() {

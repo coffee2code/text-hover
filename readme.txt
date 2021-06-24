@@ -27,6 +27,7 @@ Additional features of the plugin controlled both via settings and filters:
 * Hover text can be made case insensitive (it is case sensitive by default)
 * Hover text can be limited to doing only one replacement per term, per post (by default, all occurrences of a term are given hovertext)
 * Hover text can be rendered using the default browser tooltip (by default, the better-looking <a href="http://qtip2.com/">qTip2</a> library is used)
+* Hover text can be expanded to affect other filters
 
 **Note:** This is not the same as my [Text Replace](https://wordpress.org/plugins/text-replace) plugin, which defines terms or phrases that you want replaced by replacement text when displayed on your site. Text Hover instead adds the hover text as additional information for when visitors hover over the term, which is otherwise displayed in the post as you typed it.
 
@@ -75,7 +76,9 @@ By default, the plugin filters the post content, post excerpt fields, widget tex
 
 = How can I get text hover to apply for post titles (or something not processed for text hover by default)? =
 
-You can add to the list of filters that get processed for text hover terms. See the Hooks section for an example.
+The easiest way would be to add "the_title" (or some other filter's name) as a line in the "More filters" setting. That setting allows any additional specified filters to be processed for text hovers.
+
+You can also programmatically add to the list of filters that get processed for text hover terms. See the Hooks section for an example.
 
 = Is the plugin case sensitive? =
 
@@ -92,6 +95,8 @@ Yes, but only if you have the pretty tooltips enabled (via settings or the filte
 = Does this plugin explicitly support any third-party plugins? =
 
 Yes. While this plugin is compatible with many other plugins that modify post and widget text, this plugin has explicit built-in support for Advanced Custom Fields and Elementor, which provide additional content areas. This plugin provides hooks that can be used to enable compatibility with other plugins and themes.
+
+If you know the name of the filter provided by a plugin, you can add it to the "More filters" setting to have its value processed for text hover.
 
 = Does this plugin include unit tests? =
 

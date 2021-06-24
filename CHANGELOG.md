@@ -1,6 +1,7 @@
 # Changelog
 
 ## _(in-progress)_
+* NeW: Add new setting "More filters" to allow for user-specified filters to be processed
 * Change: Update plugin framework to 063
     * 063:
     * Fix: Simplify settings initialization to prevent conflicts with other plugins

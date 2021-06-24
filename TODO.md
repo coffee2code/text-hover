@@ -10,7 +10,6 @@ The following list comprises ideas, suggestions, and known issues, all of which 
 * Smarter input form for text hovers. Repeatable field with sub-fields name and hover text. (This will allow having multiline hover text).
 * Ability for users to set the text color, background color, and border color of their tooltips.
 * Settings page text area for testing sample text. Use AJAX to fetch parsed text from server for display. Applies same styles as it would on frontend.
-* Add setting to specify additional filters to be handled by the plugin.
 * Add FAQ regarding if the text hover affect and styling can be used on-the-fly in posts. E.g. how they can write a one-off abbreviation themselves.
 * Facilitate support for third-party plugins / Add setting to allow for comma-separated list of filters to apply text hover to
 
