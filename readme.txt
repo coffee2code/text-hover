@@ -8,7 +8,7 @@ Requires at least: 4.9
 Tested up to: 5.7
 Stable tag: 4.0
 
-Add hover text to regular text in posts. Handy for providing explanations of names, terms, phrases, abbreviations, and acronyms mentioned in posts/pages.
+Add hover text (aka tooltips) to content in posts. Handy for providing explanations of names, terms, phrases, abbreviations, and acronyms.
 
 
 == Description ==

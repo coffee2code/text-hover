@@ -1,6 +1,6 @@
 # Text Hover
 
-A plugin for WordPress for adding hover text to regular text in posts. Handy for providing explanations of names, terms, phrases, and acronyms mentioned in posts/pages.
+A plugin for WordPress for adding hover text (aka tooltips) to content in posts. Handy for providing explanations of names, terms, phrases, abbreviations, and acronyms.
 
 This plugin is available in the WordPress Plugin Directory: https://wordpress.org/plugins/text-hover/
 

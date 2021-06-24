@@ -44,6 +44,7 @@
 * Change: Move translation of all parent class strings into main plugin file
 * Change: Note compatibility through WP 5.7+
 * Change: Update copyright date (2021)
+* Change: Change plugin's short description
 * Change: Tweak plugin's readme.txt tags
 * Fix: Use correct textdomain for a string translation
 * Unit tests:
