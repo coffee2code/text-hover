@@ -43,6 +43,7 @@
     * Remove defunct line of code
 * New: Add `get_default_filters()` as getter for core filters, third-party filters, or both
 * Change: Move translation of all parent class strings into main plugin file
+* Change: Output newlines after block-level tags in settings page
 * Change: Note compatibility through WP 5.7+
 * Change: Update copyright date (2021)
 * Change: Change plugin's short description
