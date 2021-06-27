@@ -110,7 +110,7 @@ final class c2c_TextHover extends c2c_Plugin_064 {
 
 		$this->config = array(
 			'text_to_hover' => array(
-				'input'            => 'textarea',
+				'input'            => 'inline_textarea',
 				'datatype'         => 'hash',
 				'default'          => array(
 					"WP" => "WordPress"
@@ -118,7 +118,7 @@ final class c2c_TextHover extends c2c_Plugin_064 {
 				'allow_html'       => true,
 				'no_wrap'          => true,
 				'input_attributes' => 'rows="15"',
-				'label'            => '',
+				'label'            => __( 'Text to hover', 'text-hover' ),
 				'help'             => '',
 			),
 			'text_hover_comments' => array(
