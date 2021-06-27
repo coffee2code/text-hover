@@ -1,7 +1,7 @@
 # Changelog
 
 ## _(in-progress)_
-* NeW: Add new setting "More filters" to allow for user-specified filters to be processed
+* New: Add new setting "More filters" to allow for user-specified filters to be processed
 * Change: Update plugin framework to 064
     * 064:
     * New: For checkbox settings, support a 'more_help' config option for defining help text to appear below checkbox and its label
