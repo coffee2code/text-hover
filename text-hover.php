@@ -131,15 +131,15 @@ final class c2c_TextHover extends c2c_Plugin_064 {
 				'input'            => 'checkbox',
 				'default'          => false,
 				'label'            => __( 'Only text hover once per term per post?', 'text-hover' ),
-				'help'             => __( 'If checked, then each term will only have a text hover occur for the first instance it appears in a post.', 'text-hover' ) .
-					'<br />' .
-					__( 'Note: this setting currently does not apply if the term contains a multibyte character.', 'text-hover' ),
+				'help'             => __( 'If checked, then each term will only have a text hover occur for the first instance it appears in a post.', 'text-hover' ),
+				'more_help'        => __( 'Note: this setting currently does not apply if the term contains a multibyte character.', 'text-hover' ),
 			),
 			'case_sensitive' => array(
 				'input'            => 'checkbox',
 				'default'          => true,
 				'label'            => __( 'Should the matching of terms/abbreviations be case sensitive?', 'text-hover' ),
-				'help'             => __( 'If checked, then hover text defined for \'WP\' would not apply to \'wp\'. This setting applies to all terms. If you want to selectively have case insensitive terms, then leave this option checked and create separate entries for each variation.', 'text-hover' ),
+				'help'             => __( 'If checked, then hover text defined for \'WP\' would not apply to \'wp\'.', 'text-hover' ),
+				'more_help'        => __( 'This setting applies to all terms. If you want to selectively have case insensitive terms, then leave this option checked and create separate entries for each variation.', 'text-hover' ),
 			),
 			'use_pretty_tooltips' => array(
 				'input'            => 'checkbox',
