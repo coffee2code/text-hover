@@ -4,6 +4,7 @@
 * NeW: Add new setting "More filters" to allow for user-specified filters to be processed
 * Change: Update plugin framework to 064
     * 064:
+    * New: For checkbox settings, support a 'more_help' config option for defining help text to appear below checkbox and its label
     * 063:
     * Fix: Simplify settings initialization to prevent conflicts with other plugins
     * Change: Remove ability to detect plugin settings page before current screen is set, as it is no longer needed
