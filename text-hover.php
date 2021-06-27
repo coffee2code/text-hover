@@ -119,13 +119,13 @@ final class c2c_TextHover extends c2c_Plugin_064 {
 				'no_wrap'          => true,
 				'input_attributes' => 'rows="15"',
 				'label'            => __( 'Text to hover', 'text-hover' ),
-				'help'             => '',
+				'help'             => __( 'One per line. A single hover text definition must not span multiple lines. Limit use of HTML to basic formatting tags if you must, but only if better looking tooltips enabled below.', 'text-hover' ),
 			),
 			'text_hover_comments' => array(
 				'input'            => 'checkbox',
 				'default'          => false,
 				'label'            => __( 'Enable text hover in comments?', 'text-hover' ),
-				'help'             => '',
+				'help'             => __( 'If checked, then all comments, including those from visitors, will be processed for hover text.', 'text-hover' ),
 			),
 			'replace_once' => array(
 				'input'            => 'checkbox',
@@ -138,7 +138,7 @@ final class c2c_TextHover extends c2c_Plugin_064 {
 				'input'            => 'checkbox',
 				'default'          => true,
 				'label'            => __( 'Should the matching of terms/abbreviations be case sensitive?', 'text-hover' ),
-				'help'             => __( 'If checked, then hover text defined for \'WP\' would not apply to \'wp\'.', 'text-hover' ),
+				'help'             => __( 'If checked, then as an example, hover text defined for \'WP\' would not apply to \'wp\'.', 'text-hover' ),
 				'more_help'        => __( 'This setting applies to all terms. If you want to selectively have case insensitive terms, then leave this option checked and create separate entries for each variation.', 'text-hover' ),
 			),
 			'use_pretty_tooltips' => array(
@@ -164,7 +164,7 @@ final class c2c_TextHover extends c2c_Plugin_064 {
 				'help'             => sprintf(
 					/* translators: %s: List of default filters. */
 					__( 'List more filters that should get text hover processing. One filter per line. These supplement the default filters: %s (and any others added via filters).', 'text-hover' ),
-					implode( ', ', $this->get_default_filters() )
+					'<code>' . implode( '</code>, <code>', $this->get_default_filters() ) . '</code>'
 				),
 			),
 		);
@@ -373,7 +373,7 @@ final class c2c_TextHover extends c2c_Plugin_064 {
 	public function options_page_description( $localized_heading_text = '' ) {
 		parent::options_page_description( __( 'Text Hover Settings', 'text-hover' ) );
 
-		echo '<p>' . __( 'Text Hover is a plugin that allows you to add hover text for text in posts. Very handy to create hover explanations of people mentioned in your blog, and/or definitions of unique abbreviations and terms you use.', 'text-hover' ) . "</p>\n";
+		echo '<p>' . __( 'Text Hover is a plugin that allows you to add hover text (aka tooltips) to content in posts. Handy for providing explanations of names, terms, phrases, abbreviations, and acronyms.', 'text-hover' ) . "</p>\n";
 		echo '<div class="c2c-hr">&nbsp;</div>' . "\n";
 		echo '<h3>' . __( 'Abbreviations and hover text', 'text-hover' ) . "</h3>\n";
 		echo '<p>' . __( 'Define terms/abbreviations and hovertext explanations here. The format should be like this:', 'text-hover' ) . "</p>\n";
@@ -382,16 +382,11 @@ final class c2c_TextHover extends c2c_Plugin_064 {
 		echo ' ' . __( 'See how things look: <abbr title="WordPress" class="c2c-text-hover">WP</abbr> (better-looking) or <abbr title="WordPress">WP</abbr> (basic).', 'text-hover' ) . "</p>\n";
 		echo '<p>' . __( 'Other considerations:', 'text-hover' ) . '</p>' . "\n";
 		echo '<ul class="c2c-plugin-list"><li>' . "\n";
-		echo __( 'Terms and abbreviations are assumed to be whole words within your posts (i.e. they are immediately prepended by some sort of space character (space, tab, etc) and are immediately appended by a space character or punctuation (which can include any of: ?!.,-+)]})', 'text-hover' );
+		/* translators: %s: Punctuation that signify the end of a word. */
+		echo sprintf( __( 'Terms and abbreviations are assumed to be whole words within your posts (i.e. they are immediately preceeded by some sort of space character (space, tab, etc) and are immediately followed by a space character or punctuation (which can include any of: %s)', 'text-hover' ), '<code>?!.,-+)]}</code>' );
 		echo "</li>\n<li>";
 		echo __( 'Only use quotes if they are actually part of the original or hovertext strings.', 'text-hover' );
-		echo "</li>\n<li><strong><em>";
-		echo __( 'Define only one hovertext per line.', 'text-hover' );
-		echo "</em></strong></li>\n<li><strong><em>";
-		echo __( 'Hovertexts must not span multiple lines.', 'text-hover' );
-		echo "</em></strong></li>\n<li><strong><em>";
-		echo __( 'The use of HTML in hovertext should be limited to basic formatting tags, and only if you have better looking tooltips enabled.', 'text-hover' );
-		echo "</em></strong></li>\n</ul>\n";
+		echo "</li></ul>\n";
 	}
 
 	/**

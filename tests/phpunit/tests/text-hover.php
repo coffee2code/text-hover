@@ -866,7 +866,7 @@ class Text_Hover_Test extends WP_UnitTestCase {
 	public function test_options_page_description() {
 		$expected = '<h1>Text Hover Settings</h1>' . "\n";
 		$expected .= '<p class="see-help">See the "Help" link to the top-right of the page for more help.</p>' . "\n";
-		$expected .= '<p>Text Hover is a plugin that allows you to add hover text for text in posts. Very handy to create hover explanations of people mentioned in your blog, and/or definitions of unique abbreviations and terms you use.</p>';
+		$expected .= '<p>Text Hover is a plugin that allows you to add hover text (aka tooltips) to content in posts. Handy for providing explanations of names, terms, phrases, abbreviations, and acronyms.</p>';
 
 		$this->expectOutputRegex( '~' . preg_quote( $expected ) . '~', $this->obj->options_page_description() );
 	}
