@@ -2,7 +2,8 @@
 
 ## _(in-progress)_
 * NeW: Add new setting "More filters" to allow for user-specified filters to be processed
-* Change: Update plugin framework to 063
+* Change: Update plugin framework to 064
+    * 064:
     * 063:
     * Fix: Simplify settings initialization to prevent conflicts with other plugins
     * Change: Remove ability to detect plugin settings page before current screen is set, as it is no longer needed
