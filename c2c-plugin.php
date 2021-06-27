@@ -55,6 +55,7 @@ abstract class c2c_Plugin_064 {
 		'output'           => '', // likely deprecated
 		'required'         => false
 	);
+	protected $donation_url       = 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6ARCFJ9TX3522';
 	protected $saved_settings     = false;
 	protected $saved_settings_msg = '';
 
@@ -751,9 +752,8 @@ HTML;
 	 */
 	public function donate_link( $links, $file ) {
 		if ( $file == $this->plugin_basename ) {
-			$donation_url  = 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6ARCFJ9TX3522';
 			$title         = $this->get_c2c_string( 'Coffee fuels my coding.' );
-			$links[] = '<a href="' . esc_url( $donation_url ) . '" title="' . esc_attr( $title ) . '">' . $this->get_c2c_string( 'Donate' ) . '</a>';
+			$links[] = '<a href="' . esc_url( $this->donation_url ) . '" title="' . esc_attr( $title ) . '">' . $this->get_c2c_string( 'Donate' ) . '</a>';
 		}
 		return $links;
 	}
@@ -1081,7 +1081,7 @@ HTML;
 		);
 		printf(
 			'<span><a href="%1$s" title="%2$s">%3$s</span>',
-			esc_url( 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6ARCFJ9TX3522' ),
+			esc_url( $this->donation_url ),
 			esc_attr( $this->get_c2c_string( 'Please consider a donation' ) ),
 			$this->get_c2c_string( 'Did you find this plugin useful?' )
 		);
