@@ -5,6 +5,7 @@
 * Change: Update plugin framework to 064
     * 064:
     * New: For checkbox settings, support a 'more_help' config option for defining help text to appear below checkbox and its label
+    * Fix: Fix URL for plugin listing donate link
     * 063:
     * Fix: Simplify settings initialization to prevent conflicts with other plugins
     * Change: Remove ability to detect plugin settings page before current screen is set, as it is no longer needed
