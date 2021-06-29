@@ -68,6 +68,7 @@
     * New: Add additional punctuation-related test cases
     * New: Add helper function `get_core_filters()` and `get_3rd_party_filters()` to DRY up data reuse
 * New: Add a few more possible TODO items
+* Change: Updated screenshot for settings page
 
 ## 4.0 _(2020-07-16)_
 
