@@ -315,12 +315,12 @@ final class c2c_TextHover extends c2c_Plugin_064 {
 				=> __( ' (especially check out the "Other Notes" tab, if present)', 'text-hover' ),
 			'Coffee fuels my coding.'
 				=> __( 'Coffee fuels my coding.', 'text-hover' ),
-			'Did you find this plugin useful?'
-				=> __( 'Did you find this plugin useful?', 'text-hover' ),
 			'Donate'
 				=> __( 'Donate', 'text-hover' ),
 			'Expected integer value for: %s'
 				=> __( 'Expected integer value for: %s', 'text-hover' ),
+			'If this plugin has been useful to you, please consider a donation'
+				=> __( 'If this plugin has been useful to you, please consider a donation', 'text-hover' ),
 			'Invalid file specified for C2C_Plugin: %s'
 				/* translators: %s: Path to the plugin file. */
 				=> __( 'Invalid file specified for C2C_Plugin: %s', 'text-hover' ),
@@ -331,8 +331,6 @@ final class c2c_TextHover extends c2c_Plugin_064 {
 				=> __( 'More Help', 'text-hover' ),
 			'More Plugin Help'
 				=> __( 'More Plugin Help', 'text-hover' ),
-			'Please consider a donation'
-				=> __( 'Please consider a donation', 'text-hover' ),
 			'Reset Settings'
 				=> __( 'Reset Settings', 'text-hover' ),
 			'Save Changes'
@@ -345,6 +343,8 @@ final class c2c_TextHover extends c2c_Plugin_064 {
 				=> __( 'Settings reset.', 'text-hover' ),
 			'Something went wrong.'
 				=> __( 'Something went wrong.', 'text-hover' ),
+			"Thanks for the consideration; it's much appreciated."
+				=> __( "Thanks for the consideration; it's much appreciated.", 'text-hover' ),
 			'The method %1$s should not be called until after the %2$s action.'
 				/* translators: 1: The name of a code function, 2: The name of a WordPress action. */
 				=> __( 'The method %1$s should not be called until after the %2$s action.', 'text-hover' ),
