@@ -271,7 +271,7 @@ add_filter( 'c2c_text_hover_use_pretty_tooltips', '__return_false' );`
 
 Highlights:
 
-* This minor release adds a new setting that can allow the plugin to run later to avoid potential conflicts with other plugins, now allows hover strings to begin or end with punctuation, updates its plugin framework, adds a TODO.md file, updates a few URLs to be HTTPS, expands unit testing, and updates compatibility to be WP 4.9-5.4+.
+This minor release adds a new setting that can allow the plugin to run later to avoid potential conflicts with other plugins, now allows hover strings to begin or end with punctuation, updates its plugin framework, adds a TODO.md file, updates a few URLs to be HTTPS, expands unit testing, and updates compatibility to be WP 4.9-5.4+.
 
 Details:
 
