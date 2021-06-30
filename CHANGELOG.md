@@ -57,6 +57,7 @@
 * Change: Update copyright date (2021)
 * Change: Change plugin's short description
 * Change: Tweak plugin's readme.txt tags
+* Change: Sync installation instructions in README.txt with what's in readme.txt
 * Fix: Use correct textdomain for a string translation
 * Unit tests:
     * Change: Restructure unit test directories and files into `tests/` top-level directory

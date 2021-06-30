@@ -40,6 +40,7 @@ Links: [Plugin Homepage](https://coffee2code.com/wp-plugins/text-hover/) | [Plug
 1. Install via the built-in WordPress plugin installer. Or download and unzip `text-hover.zip` inside the plugins directory for your site (typically `wp-content/plugins/`)
 1. Activate the plugin through the 'Plugins' admin menu in WordPress
 1. Go to the `Settings` -> `Text Hover` admin settings page and customize the settings (namely to define the terms/abbreviations and their explanations).
+1. Optional: Configure other plugin settings as desired.
 1. Use the terms/abbreviations in posts and/or pages (terms/abbreviations appearing in existing posts will also be affected by this plugin)
 
 
