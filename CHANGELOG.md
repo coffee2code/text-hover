@@ -1,6 +1,13 @@
 # Changelog
 
-## _(in-progress)_
+## 4.1 _(2021-06-29)_
+
+### Highlights:
+
+This feature release adds a new setting to allow for user-specified filters to be processed, updates the plugin framework significantly, improves the plugin settings page, restructures unit test files, notes compatibility through WP 5.7, and more.
+
+### Details:
+
 * New: Add new setting "More filters" to allow for user-specified filters to be processed
 * Change: Update plugin framework to 064
     * 064:
