@@ -47,6 +47,7 @@
     * Update `readme_url()` to refer to plugin's readme.txt on plugins.svn.wordpress.org
     * Remove defunct line of code
 * New: Add `get_default_filters()` as getter for core filters, third-party filters, or both
+* Change: Allow displayed dropdown values for 'when' setting to be translated
 * Change: Improve settings page help text by adding, rephrasing, relocating, and tweaaking some formatting
 * Change: Change text_to_hover setting from being a textarea to inline textarea
 * Change: Move translation of all parent class strings into main plugin file
