@@ -132,7 +132,6 @@ final class c2c_TextHover extends c2c_Plugin_064 {
 				'default'          => false,
 				'label'            => __( 'Only text hover once per term per post?', 'text-hover' ),
 				'help'             => __( 'If checked, then each term will only have a text hover occur for the first instance it appears in a post.', 'text-hover' ),
-				'more_help'        => __( 'Note: this setting currently does not apply if the term contains a multibyte character.', 'text-hover' ),
 			),
 			'case_sensitive' => array(
 				'input'            => 'checkbox',
