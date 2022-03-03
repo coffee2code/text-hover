@@ -10,7 +10,7 @@
  * Text Domain: text-hover
  * Description: Add hover text (aka tooltips) to content in posts. Handy for providing explanations of names, terms, phrases, abbreviations, and acronyms.
  *
- * Compatible with WordPress 4.9+ through 5.7+.
+ * Compatible with WordPress 4.9+ through 5.9+.
  *
  * =>> Read the accompanying readme.txt file for instructions and documentation.
  * =>> Also, visit the plugin's homepage for additional information and updates.
