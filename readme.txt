@@ -46,9 +46,9 @@ Links: [Plugin Homepage](https://coffee2code.com/wp-plugins/text-hover/) | [Plug
 
 == Screenshots ==
 
-1. A screenshot of the admin options page for the plugin, where you define the terms/acronyms/phrases and their related hover text
-2. A screenshot of the plugin in action for a post when the mouse is hovering over a defined hover text term using the pretty tooltips
-3. A screenshot of the plugin in action for a post when the mouse is hovering over a defined hover text term using default browser tooltips (in this case, Chrome on OSX)
+1. The admin options page for the plugin, where you define the terms/acronyms/phrases and their related hover text
+2. The plugin in action for a post when the mouse is hovering over a defined hover text term using the pretty tooltips
+3. The plugin in action for a post when the mouse is hovering over a defined hover text term using default browser tooltips (in this case, Chrome on OSX)
 
 
 == Frequently Asked Questions ==
