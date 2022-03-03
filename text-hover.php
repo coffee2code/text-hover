@@ -156,7 +156,10 @@ final class c2c_TextHover extends c2c_Plugin_064 {
 				),
 				'label'            => __( 'When to process text?', 'text-hover' ),
 				/* translators: %s: The name of a filter provided by the plugin. */
-				'help'             => sprintf( __( "Text hover replacements can happen 'early' (before most other text processing for posts) or 'late' (after most other text processing for posts). By default the plugin handles text early, but depending on the replacements you've defined and the plugins you're using, you can eliminate certain conflicts by switching to 'late'. Finer-grained control can be achieved via the <code>%s</code> filter.", 'text-hover' ), 'c2c_text_hover_filter_priority' ),
+				'help'             => sprintf(
+					__( "Text hover replacements can happen 'early' (before most other text processing for posts) or 'late' (after most other text processing for posts). By default the plugin handles text early, but depending on the replacements you've defined and the plugins you're using, you can eliminate certain conflicts by switching to 'late'. Finer-grained control can be achieved via the %s filter.", 'text-hover' ),
+					'<code>c2c_text_hover_filter_priority</code>'
+				),
 			),
 			'more_filters' => array(
 				'input'            => 'inline_textarea',
