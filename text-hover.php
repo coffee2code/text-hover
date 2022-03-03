@@ -179,7 +179,7 @@ final class c2c_TextHover extends c2c_Plugin_064 {
 	 *
 	 * The values do not take into account any user-specified filters from the
 	 * more_filters setting nor any filtering. A value returned here does not
-	 * necessary mean it'll get processed for text hover.
+	 * necessarily mean it'll get processed for text hover.
 	 *
 	 * Currently supported third-party plugins:
 	 *

@@ -4,6 +4,7 @@
 * Change: Note compatibility through WP 5.9+
 * Change: Remove "A screenshot of" prefix from all screenshot captions
 * Change: Tweak installation instructions in README.md
+* Change: Fix typo in function docblock
 * Change: Update copyright date (2022)
 
 ## 4.1 _(2021-06-29)_
