@@ -1,6 +1,7 @@
 # Changelog
 
 ## _(in-progress)_
+* New: Add DEVELOPER-DOCS.md and move hooks documentation into it
 * Change: Remove settings page helptext about 'replace_once' setting not applying to multibyte strings since it's no longer true
 * Change: Lowercase the displayed values for 'when' setting
 * Change: Move 'code' tags out of translatable string for 'when' setting
