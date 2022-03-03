@@ -1,6 +1,8 @@
 # Changelog
 
 ## _(in-progress)_
+* Change: Prevent users who cannot post unfiltered HTML from defining text hovers. Props Erwan.
+    * Existing text hovers will continue to work regardless of who configured them.
 * New: Add DEVELOPER-DOCS.md and move hooks documentation into it
 * Change: Remove settings page helptext about 'replace_once' setting not applying to multibyte strings since it's no longer true
 * Change: Lowercase the displayed values for 'when' setting

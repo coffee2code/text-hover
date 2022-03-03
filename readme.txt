@@ -99,6 +99,12 @@ Yes. While this plugin is compatible with many other plugins that modify post an
 
 If you know the name of the filter provided by a plugin, you can add it to the "More filters" setting to have its value processed for text hover.
 
+= Why can't I find or access the plugin's settings page even though the plugin is activated? =
+
+The plugin's settings page is found at "Settings" -> "Text Hover" in the admin sidebar menu.
+
+In order to see that link in the menu and to access the plugin's settings page to configure the plugin, you must be logged in as an administrator. More specifically, you must be a user with the 'manage_options' and 'unfiltered_html' capabilities, which by default are capabilities of the 'administrator' role. If you have a custom role, or your administrator role has been customized, such that both capabilities are not assigned to you, then you cannot configure the plugin.
+
 = Does this plugin include unit tests? =
 
 Yes.

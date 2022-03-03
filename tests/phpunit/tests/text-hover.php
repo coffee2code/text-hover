@@ -36,6 +36,15 @@ class Text_Hover_Test extends WP_UnitTestCase {
 
 	public static function setUpBeforeClass() {
 		c2c_TextHover::get_instance()->install();
+
+		add_role(
+			'manage_options_but_no_unfiltered_html',
+			'Admin without unfiltered HTML',
+			array(
+				'manage_options'  => true,
+				'unfiltered_html' => false,
+			)
+		);
 	}
 
 	public function setUp() {
@@ -901,6 +910,28 @@ class Text_Hover_Test extends WP_UnitTestCase {
 		c2c_TextHover::uninstall();
 
 		$this->assertFalse( get_option( $option_name ) );
+	}
+
+	public function test_admin_can_access_settings_page() {
+		$admin_id = $this->factory->user->create( array( 'role' => 'administrator' ) );
+		wp_set_current_user( $admin_id );
+		$this->obj->init();
+
+		$this->assertTrue( user_can( $admin_id, 'manage_options' ) );
+		$this->assertTrue( user_can( $admin_id, 'unfiltered_html' ) );
+
+		$this->assertEquals( 10, has_action( 'admin_menu', array( $this->obj, 'admin_menu' ) ) );
+	}
+
+	public function test_user_with_manage_options_but_not_unfiltered_html_cannot_access_settings_page() {
+		$restricted_admin_id = $this->factory->user->create( array( 'role' => 'manage_options_but_no_unfiltered_html' ) );
+		wp_set_current_user( $restricted_admin_id );
+		$this->obj->init();
+
+		$this->assertTrue( user_can( $restricted_admin_id, 'manage_options' ) );
+		$this->assertFalse( user_can( $restricted_admin_id, 'unfiltered_html' ) );
+
+		$this->assertFalse( has_action( 'admin_menu', array( $this->obj, 'admin_menu' ) ) );
 	}
 
 }

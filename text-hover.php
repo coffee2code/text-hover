@@ -238,6 +238,11 @@ final class c2c_TextHover extends c2c_Plugin_064 {
 	public function register_filters() {
 		$options = $this->get_options();
 
+		// Disable settings page if user cannot post unfiltered HTML.
+		if ( ! current_user_can( 'unfiltered_html' ) ) {
+			remove_action( 'admin_menu', array( $this, 'admin_menu' ) );
+		}
+
 		/**
 		 * Filters third party plugin/theme hooks that get processed for hover text.
 		 *
