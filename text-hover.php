@@ -151,8 +151,8 @@ final class c2c_TextHover extends c2c_Plugin_064 {
 				'datatype'         => 'hash',
 				'default'          => 'early',
 				'options'          => array(
-					'early' => __( 'Early', 'text-hover' ),
-					'late'  => __( 'Late', 'text-hover' )
+					'early' => __( 'early', 'text-hover' ),
+					'late'  => __( 'late', 'text-hover' )
 				),
 				'label'            => __( 'When to process text?', 'text-hover' ),
 				/* translators: %s: The name of a filter provided by the plugin. */

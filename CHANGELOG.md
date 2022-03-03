@@ -2,6 +2,7 @@
 
 ## _(in-progress)_
 * Change: Remove settings page helptext about 'replace_once' setting not applying to multibyte strings since it's no longer true
+* Change: Lowercase the displayed values for 'when' setting
 * Change: Note compatibility through WP 5.9+
 * Change: Remove "A screenshot of" prefix from all screenshot captions
 * Change: Tweak installation instructions in README.md
