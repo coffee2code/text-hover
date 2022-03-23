@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Text Hover
- * Version:     4.1
+ * Version:     4.2
  * Plugin URI:  https://coffee2code.com/wp-plugins/text-hover/
  * Author:      Scott Reilly
  * Author URI:  https://coffee2code.com/
@@ -18,7 +18,7 @@
  *
  * @package Text_Hover
  * @author  Scott Reilly
- * @version 4.1
+ * @version 4.2
  */
 
 /*
@@ -79,7 +79,7 @@ final class c2c_TextHover extends c2c_Plugin_064 {
 	 * Constructor.
 	 */
 	protected function __construct() {
-		parent::__construct( '4.1', 'text-hover', 'c2c', __FILE__, array() );
+		parent::__construct( '4.2', 'text-hover', 'c2c', __FILE__, array() );
 		register_activation_hook( __FILE__, array( __CLASS__, 'activation' ) );
 
 		return self::$instance = $this;

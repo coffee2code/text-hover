@@ -1,6 +1,13 @@
 # Changelog
 
-## _(in-progress)_
+## 4.2 _(2022-03-22)_
+
+### Highlights:
+
+This release introduces security hardening to restrict HTML tags that can be used as hover text in fancy tooltips, adds DEVELOPER-DOCS.md, notes compatibility through WP 5.9, and minor settings page and documentation tweaks.
+
+### Details:
+
 * Change: Disallow all but the most basic formatting markup within hover text. Props Rohan Chaudhari.
     * As continues to be the case, markup only ever works in the better looking tooltips.
     * This only enforces the already documented limited markup support to basic formatting tags.

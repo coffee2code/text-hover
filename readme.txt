@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 4.9
 Tested up to: 5.9
-Stable tag: 4.1
+Stable tag: 4.2
 
 Add hover text (aka tooltips) to content in posts. Handy for providing explanations of names, terms, phrases, abbreviations, and acronyms.
 
@@ -126,6 +126,28 @@ Developer documentation can be found in [DEVELOPER-DOCS.md](https://github.com/c
 
 == Changelog ==
 
+= 4.2 (2022-03-22) =
+Highlights:
+
+This release introduces security hardening to restrict HTML tags that can be used as hover text in fancy tooltips, adds DEVELOPER-DOCS.md, notes compatibility through WP 5.9, and minor settings page and documentation tweaks.
+
+Details:
+
+* Change: Disallow all but the most basic formatting markup within hover text. Props Rohan Chaudhari.
+    * As continues to be the case, markup only ever works in the better looking tooltips.
+    * This only enforces the already documented limited markup support to basic formatting tags.
+    * Existing text hovers will be unaffected until the next time settings get saved.
+* New: Add DEVELOPER-DOCS.md and move hooks documentation into it
+* Change: Remove settings page helptext about 'replace_once' setting not applying to multibyte strings since it's no longer true
+* Change: Lowercase the displayed values for 'when' setting
+* Change: Move 'code' tags out of translatable string for 'when' setting
+* Change: Note compatibility through WP 5.9+
+* Change: Remove "A screenshot of" prefix from all screenshot captions
+* Change: Tweak installation instructions in README.md
+* Change: Fix typo in function docblock
+* Change: Update copyright date (2022)
+* New: Add a few more possible TODO items
+
 = 4.1 (2021-06-29) =
 Highlights:
 
@@ -243,18 +265,13 @@ Details:
     * Change: Use HTTPS for link to WP SVN repository in bin script for configuring unit tests (and delete commented-out code)
 * Change: Update screenshot
 
-= 3.9.1 (2020-01-12) =
-* Fix: Revert to apply to the `the_excerpt` filter, which was mistakenly changed to `get_the_excerpt`
-* Change: Update some inline documentation relating to third-party plugin hook support
-* Unit tests:
-    * Change: Implement a more generic approach to capture default values provided for a filter
-    * New: Add test to verify the lack of any defined hover text doesn't remove zeroes from text
-    * Fix: Correct typo in function name used
-
 _Full changelog is available in [CHANGELOG.md](https://github.com/coffee2code/text-hover/blob/master/CHANGELOG.md)._
 
 
 == Upgrade Notice ==
+
+= 4.2 =
+Recommended hardening release: restricted HTML tags that can be used as hover text in fancy tooltips, added DEVELOPER-DOCS.md, noted compatibility through WP 5.9, and minor settings page and documentation tweaks.
 
 = 4.1 =
 Recommended feature release: added new setting to allow for user-specified filters to be processed, updated plugin framework significantly, improved plugin settings page, restructured unit test files, noted compatibility through WP 5.7, and more.
