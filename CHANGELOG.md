@@ -14,6 +14,7 @@
 * Change: Tweak installation instructions in README.md
 * Change: Fix typo in function docblock
 * Change: Update copyright date (2022)
+* New: Add a few more possible TODO items
 
 ## 4.1 _(2021-06-29)_
 
