@@ -698,6 +698,25 @@ class Text_Hover_Test extends WP_UnitTestCase {
 		$this->assertGreaterThan( 0, strpos( apply_filters( $filter, 'a coffee2code' ), $expected ) );
 	}
 
+	public function test_disallowed_markup_is_stripped() {
+		$orig_text_to_hover = self::$text_to_hover;
+		self::$text_to_hover['xss'] = '<script>alert(1);</script> Hi';
+		self::$text_to_hover['myspan'] = 'This has <span>text in a span</span>.';
+
+		$this->set_option();
+
+		$this->assertEquals(
+			"<abbr class='c2c-text-hover' title='alert(1); Hi'>xss</abbr>",
+			$this->text_hover( 'xss' )
+		);
+		$this->assertEquals(
+			"<abbr class='c2c-text-hover' title='This has text in a span.'>myspan</abbr>",
+			$this->text_hover( 'myspan' )
+		);
+
+		self::$text_to_hover = $orig_text_to_hover;
+	}
+
 	/**
 	 * @dataProvider get_third_party_filters
 	 */
@@ -910,28 +929,6 @@ class Text_Hover_Test extends WP_UnitTestCase {
 		c2c_TextHover::uninstall();
 
 		$this->assertFalse( get_option( $option_name ) );
-	}
-
-	public function test_admin_can_access_settings_page() {
-		$admin_id = $this->factory->user->create( array( 'role' => 'administrator' ) );
-		wp_set_current_user( $admin_id );
-		$this->obj->init();
-
-		$this->assertTrue( user_can( $admin_id, 'manage_options' ) );
-		$this->assertTrue( user_can( $admin_id, 'unfiltered_html' ) );
-
-		$this->assertEquals( 10, has_action( 'admin_menu', array( $this->obj, 'admin_menu' ) ) );
-	}
-
-	public function test_user_with_manage_options_but_not_unfiltered_html_cannot_access_settings_page() {
-		$restricted_admin_id = $this->factory->user->create( array( 'role' => 'manage_options_but_no_unfiltered_html' ) );
-		wp_set_current_user( $restricted_admin_id );
-		$this->obj->init();
-
-		$this->assertTrue( user_can( $restricted_admin_id, 'manage_options' ) );
-		$this->assertFalse( user_can( $restricted_admin_id, 'unfiltered_html' ) );
-
-		$this->assertFalse( has_action( 'admin_menu', array( $this->obj, 'admin_menu' ) ) );
 	}
 
 }

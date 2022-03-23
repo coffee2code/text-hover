@@ -238,11 +238,6 @@ final class c2c_TextHover extends c2c_Plugin_064 {
 	public function register_filters() {
 		$options = $this->get_options();
 
-		// Disable settings page if user cannot post unfiltered HTML.
-		if ( ! current_user_can( 'unfiltered_html' ) ) {
-			remove_action( 'admin_menu', array( $this, 'admin_menu' ) );
-		}
-
 		/**
 		 * Filters third party plugin/theme hooks that get processed for hover text.
 		 *
@@ -295,6 +290,45 @@ final class c2c_TextHover extends c2c_Plugin_064 {
 
 		add_filter( 'get_comment_text',    array( $this, 'text_hover_comment_text' ), 11 );
 		add_filter( 'get_comment_excerpt', array( $this, 'text_hover_comment_text' ), 11 );
+
+		add_filter( $this->get_hook( 'before_update_option' ), array( $this, 'sanitize_text_to_hover' ), 1 );
+	}
+
+	/**
+	 * Sanitizes the 'text_to_hover' setting to only include very basic
+	 * markup.
+	 *
+	 * @param array $options Plugin settings.
+	 * @return array
+	 */
+	public function sanitize_text_to_hover( $options ) {
+		if ( empty( $options['text_to_hover'] ) ) {
+			return $options;
+		}
+
+		$allowed_tags = array(
+			'a'             => array(
+				'href'  => array(),
+				'title' => array(),
+			),
+			'b'             => array(),
+			'cite'          => array(),
+			'code'          => array(),
+			'em'            => array(),
+			'i'             => array(),
+			'q'             => array(
+				'cite'  => array(),
+			),
+			's'             => array(),
+			'strikethrough' => array(),
+			'strong'        => array(),
+		);
+
+		foreach ( $options['text_to_hover'] as $key => $val ) {
+			$options['text_to_hover'][ $key ] = wp_kses( $val, $allowed_tags );
+		}
+
+		return $options;
 	}
 
 	/**

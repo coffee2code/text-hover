@@ -1,8 +1,10 @@
 # Changelog
 
 ## _(in-progress)_
-* Change: Prevent users who cannot post unfiltered HTML from defining text hovers. Props Erwan.
-    * Existing text hovers will continue to work regardless of who configured them.
+* Change: Disallow all but the most basic formatting markup within hover text. Props Rohan Chaudhari.
+    * As continues to be the case, markup only ever works in the better looking tooltips.
+    * This only enforces the already documented limited markup support to basic formatting tags.
+    * Existing text hovers will be unaffected until the next time settings get saved.
 * New: Add DEVELOPER-DOCS.md and move hooks documentation into it
 * Change: Remove settings page helptext about 'replace_once' setting not applying to multibyte strings since it's no longer true
 * Change: Lowercase the displayed values for 'when' setting
